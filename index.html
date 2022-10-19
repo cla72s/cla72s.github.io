@@ -189,7 +189,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-20 00:30:36" itemprop="dateModified" datetime="2022-10-20T00:30:36+08:00">2022-10-20</time>
+                <time title="修改时间：2022-10-20 00:32:09" itemprop="dateModified" datetime="2022-10-20T00:32:09+08:00">2022-10-20</time>
               </span>
 
           
@@ -205,21 +205,14 @@
       
           <h3 id="缺失的第一个正数"><a href="#缺失的第一个正数" class="headerlink" title="缺失的第一个正数"></a>缺失的第一个正数</h3><p>给你一个未排序的整数数组 <code>nums</code> ，请你找出其中没有出现的最小的正整数。</p>
 <p>实现时间复杂度为 <code>O(n)</code> 并且只使用常数级别额外空间的解决方案。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,0]</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,4,-1,1]</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [7,8,9,11,12]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><br/>
-
-<ul>
-<li><p>要求时间复杂度为 <code>O(n)</code> ，很容易想到是把数组里面的所有正数放到哈希表中，再利用一次遍历即可找出缺失的最小正数。但是这样，空间复杂度就也变成了 <code>O(n)</code> 不符合题目所说的常数级了。<br>在这上面进行改进，把原有的数组空间看成一个哈希表，也就是原地哈希表。</p>
-</li>
-<li><p>那么，我们可以采取这样的思路：就把 <code>1</code> 这个数放到下标为 <code>0</code> 的位置， <code>2</code> 这个数放到下标为 <code>1</code> 的位置，按照这种思路整理一遍数组。然后我们再遍历一次数组，第 <code>1</code> 个遇到的它的值不等于下标的那个数，就是我们要找的缺失的第一个正数。</p>
-</li>
-</ul>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int firstMissingPositive(int* nums, int numsSize)&#123;</span><br><span class="line">    for(int i = 0 ; i &lt; numsSize;i++)&#123;</span><br><span class="line">        while (nums[i] != i + 1)&#123;</span><br><span class="line">            if (nums[i] &lt;= 0 || nums[i] &gt; numsSize || nums[i] == nums[nums[i] - 1])</span><br><span class="line">                break;</span><br><span class="line">            // 将nums[i] 放置到对应位置上[1,2,3...]</span><br><span class="line">            int idx = nums[i] - 1;</span><br><span class="line">            nums[i] = nums[idx];</span><br><span class="line">            nums[idx] = idx + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; numsSize ;i++) &#123;</span><br><span class="line">        if (nums[i] != (i + 1)) &#123;</span><br><span class="line">            return (i + 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return numsSize + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/19/%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
