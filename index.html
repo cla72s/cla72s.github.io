@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-10-23 21:46:30 / 修改时间：21:53:49" itemprop="dateCreated datePublished" datetime="2022-10-23T21:46:30+08:00">2022-10-23</time>
+              <time title="创建时间：2022-10-23 21:46:30 / 修改时间：21:56:24" itemprop="dateCreated datePublished" datetime="2022-10-23T21:46:30+08:00">2022-10-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,16 +231,14 @@
 <p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish”）。</p>
 <p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
 <p>网格中的障碍物和空位置分别用 <code>1</code> 和 <code>0</code> 来表示。</p>
-<p>示例 1：<br><img src="/./../img/robot1.jpg"></p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：obstacleGrid = [[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br><span class="line">输出：<span class="number">2</span></span><br><span class="line">解释：<span class="number">3</span>x3 网格的正中间有一个障碍物。</span><br><span class="line">从左上角到右下角一共有 <span class="number">2</span> 条不同的路径：</span><br><span class="line"><span class="number">1.</span> 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line"><span class="number">2.</span> 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
-<p>示例 2：<br><img src="/./../img/robot2.jpg"></p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：obstacleGrid = <span class="string">[[0,1],[0,0]]</span></span><br><span class="line">输出：<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>滚动数组。</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize)&#123;</span><br><span class="line">    int n = obstacleGridSize, m = obstacleGridColSize<span class="comment">[0]</span>;</span><br><span class="line">    int f<span class="comment">[m]</span>;</span><br><span class="line">    memset(f, 0, sizeof(f));</span><br><span class="line">    f<span class="comment">[0]</span> = (obstacleGrid<span class="comment">[0]</span><span class="comment">[0]</span> == 0);</span><br><span class="line">    for (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">        for (int j = 0; j &lt; m; ++j) &#123;</span><br><span class="line">            if (obstacleGrid<span class="comment">[i]</span><span class="comment">[j]</span> == 1) &#123;</span><br><span class="line">                f<span class="comment">[j]</span> = 0;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            if (j - 1 &gt;= 0 &amp;&amp; obstacleGrid<span class="comment">[i]</span><span class="comment">[j - 1]</span> == 0) &#123;</span><br><span class="line">                f<span class="comment">[j]</span> += f<span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return f<span class="comment">[m - 1]</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(m * n);<br><br/><br>空间复杂度：O(m);</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/23/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
