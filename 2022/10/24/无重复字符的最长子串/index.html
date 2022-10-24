@@ -20,19 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="哦 豁">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+  <meta name="description" content="无重复字符的最长子串给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无重复字符的最长子串">
+<meta property="og:url" content="http://example.com/2022/10/24/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/index.html">
 <meta property="og:site_name" content="曹兴">
-<meta property="og:description" content="哦 豁">
+<meta property="og:description" content="无重复字符的最长子串给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-23T06:09:59.000Z">
-<meta property="article:modified_time" content="2022-10-23T07:26:05.659Z">
+<meta property="article:published_time" content="2022-10-24T15:03:36.000Z">
+<meta property="article:modified_time" content="2022-10-24T15:23:22.979Z">
 <meta property="article:author" content="曹兴同学">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/">
+<link rel="canonical" href="http://example.com/2022/10/24/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">
 
 
 <script id="page-configurations">
@@ -40,13 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类 | 曹兴
-</title>
+  <title>无重复字符的最长子串 | 曹兴</title>
   
 
 
@@ -159,51 +160,126 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/24/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/WechatIMG146.jpeg">
+      <meta itemprop="name" content="曹兴同学">
+      <meta itemprop="description" content="哦 豁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹兴">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          无重复字符的最长子串
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">分类
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2022-10-24 23:03:36 / 修改时间：23:23:22" itemprop="dateCreated datePublished" datetime="2022-10-24T23:03:36+08:00">2022-10-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2022/10/24/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/10/24/无重复字符的最长子串/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
   
 
-</div>
+        </div>
+      </header>
 
-</header>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 2 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a><span class="category-list-count">12</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
+        <h3 id="无重复字符的最长子串"><a href="#无重复字符的最长子串" class="headerlink" title="无重复字符的最长子串"></a>无重复字符的最长子串</h3><p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+<span id="more"></span>
+
+<p>示例 1:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">输入: s = &quot;abcabcbb&quot;</span></span><br><span class="line"><span class="section">输出: 3 </span></span><br><span class="line"><span class="section">解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span></span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">输入: s = &quot;bbbbb&quot;</span></span><br><span class="line"><span class="section">输出: 1</span></span><br><span class="line"><span class="section">解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span></span><br></pre></td></tr></table></figure>
+<p>示例 3:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">输入: s = &quot;pwwkew&quot;</span></span><br><span class="line"><span class="section">输出: 3</span></span><br><span class="line"><span class="section">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span></span><br><span class="line">     请注意，你的答案必须是 子串 的长度，<span class="string">&quot;pwke&quot;</span> 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<p><code>0 &lt;= s.length &lt;=  5 * 104</code><br><code>s</code> 由英文字母、数字、符号和空格组成</p>
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><p>这道题主要用到思路是：滑动窗口</p>
+<p>什么是滑动窗口？</p>
+<p>其实就是一个队列,比如例题中的 <code>abcabcbb</code> ，进入这个队列（窗口）为 <code>abc</code> 满足题目要求，当再进入 <code>a</code>，队列变成了 <code>abca</code>，这时候不满足要求。所以，我们要移动这个队列！</p>
+<p>如何移动？</p>
+<p>如何才能高效地移动这个队列，使得这个队列一直满足要求呢？那就得用到哈希表。<br>创建哈希表 <code>hash</code> 记录搜索的每一个字符最后出现的位置，每当出现一个字符，就将他的位置记录下来 <code>hash[s[rear]] = rear + 1</code> ，当队列进入一个字符时，使得队列中有两个字符相同时，我们就可以利用 <code>hash</code> 表快速的将左边那个字符移出去。</p>
+<p>一直维持这样的队列，找出队列出现最长的长度时候，即可求出解！</p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="type">char</span> * s)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> hash[<span class="number">127</span>] = &#123;<span class="number">0</span>&#125;,max = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> front = <span class="number">0</span>,rear = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(s[rear])&#123;</span><br><span class="line">        <span class="comment">//当在对列front下标的右侧出现2个相同的字符时，移动front。</span></span><br><span class="line">        <span class="keyword">if</span>(front &lt; hash[s[rear]])</span><br><span class="line">            front = hash[s[rear]];</span><br><span class="line">        max = max &gt; rear + <span class="number">1</span> - front ? max : rear + <span class="number">1</span> - front;</span><br><span class="line">        hash[s[rear]] = rear + <span class="number">1</span>;</span><br><span class="line">        rear++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
-    
 
     
     
     
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag"># 哈希表</a>
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag"># 滑动窗口</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/23/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/" rel="prev" title="不同路径II">
+      <i class="fa fa-chevron-left"></i> 不同路径II
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
 
 
           </div>
@@ -259,6 +335,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">无重复字符的最长子串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%EF%BC%9A"><span class="nav-number"></span> <span class="nav-text">题解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number"></span> <span class="nav-text">代码：</span></a></div>
       </div>
       <!--/noindex-->
 
