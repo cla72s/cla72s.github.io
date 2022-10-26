@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>和至少为 K 的最短子数组</title>
+      <link href="/2022/10/26/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA-K-%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/"/>
+      <url>/2022/10/26/%E5%92%8C%E8%87%B3%E5%B0%91%E4%B8%BA-K-%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，找出 <code>nums</code> 中和至少为 <code>k</code> 的 <strong>最短非空子数组</strong> ，并返回该子数组的长度。如果不存在这样的 <strong>子数组</strong> ，返回 <code>-1</code> 。</p><p><strong>子数组</strong> 是数组中 <strong>连续</strong> 的一部分。</p><span id="more"></span><p><strong>示例 1：</strong></p><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">输入：nums </span>=<span class="string"> [1], k = 1</span></span><br><span class="line"><span class="string">输出：1</span></span><br></pre></td></tr></table></figure><p><strong>示例 2：</strong></p><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">输入：nums </span>=<span class="string"> [1,2], k = 4</span></span><br><span class="line"><span class="string">输出：-1</span></span><br></pre></td></tr></table></figure><p><strong>示例 3：</strong></p><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">输入：nums </span>=<span class="string"> [2,-1,2], k = 3</span></span><br><span class="line"><span class="string">输出：3</span></span><br></pre></td></tr></table></figure><p><strong>提示：</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 105</code></li><li><code>-105 &lt;= nums[i] &lt;= 105</code></li><li><code>1 &lt;= k &lt;= 109</code></li></ul><h2 id="思路一：暴力"><a href="#思路一：暴力" class="headerlink" title="思路一：暴力"></a>思路一：暴力</h2><p>暴力解题，没什么好说的，但存在着问题。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> shortestSubarray(<span class="built_in">int</span>* nums, <span class="built_in">int</span> numsSize, <span class="built_in">int</span> k)&#123;</span><br><span class="line">    <span class="built_in">int</span> <span class="built_in">min</span> = numsSize + <span class="number">1</span>;</span><br><span class="line">    for(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; numsSize;i++)&#123;</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">sum</span> = <span class="number">0</span>,j;</span><br><span class="line">        for(j = i;<span class="built_in">sum</span> &lt; k &amp;&amp; j &lt; numsSize;j++)&#123;</span><br><span class="line">            <span class="built_in">sum</span> += nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">sum</span> &gt;= k)&#123;</span><br><span class="line">            <span class="built_in">min</span> = <span class="built_in">min</span> &lt; (j - i) ? <span class="built_in">min</span> : (j - i); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">min</span> == numsSize + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">min</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O (n^2)</code>。在这种时间复杂度下，他的运行时间有可能超时，所以该方法不可取。</li><li>空间复杂度：<code>O (1)</code>。</li></ul><h2 id="思路二："><a href="#思路二：" class="headerlink" title="思路二："></a>思路二：</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>最短的桥</title>
       <link href="/2022/10/25/%E6%9C%80%E7%9F%AD%E7%9A%84%E6%A1%A5/"/>
       <url>/2022/10/25/%E6%9C%80%E7%9F%AD%E7%9A%84%E6%A1%A5/</url>
