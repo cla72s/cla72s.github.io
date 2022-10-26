@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="一个机器人位于一个 m * n 网格的左上角（起始点在下图中标记为 “Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。 问总共有多少条不同的路径？">
@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/robot_maze.png">
 <meta property="article:published_time" content="2022-10-22T16:27:04.000Z">
-<meta property="article:modified_time" content="2022-10-25T15:01:36.478Z">
+<meta property="article:modified_time" content="2022-10-25T15:50:03.402Z">
 <meta property="article:author" content="曹兴同学">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -107,6 +107,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -141,11 +142,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">14</span></a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -199,7 +227,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-25 23:01:36" itemprop="dateModified" datetime="2022-10-25T23:01:36+08:00">2022-10-25</time>
+                <time title="修改时间：2022-10-25 23:50:03" itemprop="dateModified" datetime="2022-10-25T23:50:03+08:00">2022-10-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,10 +289,20 @@
 <p>但是由于第一行与第一列在边界，所以只能为 <code>1</code> 。</p>
 <p>简单的来说就像是个杨辉三角。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int uniquePaths(int m, int n) &#123;</span><br><span class="line">    int f<span class="comment">[m]</span><span class="comment">[n]</span>;</span><br><span class="line">    f<span class="comment">[0]</span><span class="comment">[0]</span> = 1;</span><br><span class="line">    for (int i = 0; i &lt; m; ++i) &#123;</span><br><span class="line">        for (int j = 0; j &lt; n; ++j) &#123;</span><br><span class="line">            if(i = 0 &amp;&amp; j &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[0]</span><span class="comment">[j]</span> = f<span class="comment">[0]</span><span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;else if(j = 0 &amp;&amp; i &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[i]</span><span class="comment">[0]</span> = f<span class="comment">[i - 1]</span><span class="comment">[0]</span>;</span><br><span class="line">            &#125;else if(i &gt; 0 &amp;&amp;j &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[i]</span><span class="comment">[j]</span> = f<span class="comment">[i - 1]</span><span class="comment">[j]</span> + f<span class="comment">[i]</span><span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return f<span class="comment">[m - 1]</span><span class="comment">[n - 1]</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：<code>O(m * n)</code><br><br/><br>空间复杂度：<code>O(m * n)</code></p>
+
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(m * n)</code></li>
+<li>空间复杂度：<code>O(m * n)</code></li>
+</ul>
 <h2 id="解题思路-二-：排列组合原理"><a href="#解题思路-二-：排列组合原理" class="headerlink" title="解题思路(二)：排列组合原理"></a>解题思路(二)：排列组合原理</h2><p>这个机器人总共需要走 <code>m + n -2</code> 步走到终点。其中有 <code>m - 1</code> 步是向下走的， <code>n - 1</code> 步是向右走的。利用排列组合知识，可以得出总共需要走 C<sub>n-1</sub><sup style="margin-left:-20px">m+n-2</sup> 步，意思就是从 <code>m + n -2</code> 步中选择 <code>n - 1</code> 步向右其余向左。</p>
 <h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> unique<span class="constructor">Paths(<span class="params">int</span> <span class="params">m</span>, <span class="params">int</span> <span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//保证n更小。</span></span><br><span class="line">    <span class="keyword">if</span> (m &lt; n)</span><br><span class="line">        return unique<span class="constructor">Paths(<span class="params">n</span> , <span class="params">m</span>)</span>;</span><br><span class="line">    <span class="comment">//计算路径条数</span></span><br><span class="line">    <span class="built_in">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">        ans = ans<span class="operator"> * </span>(m + i - <span class="number">1</span>)<span class="operator"> / </span>i; </span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：<code>O(min(n,m))</code>;<br>空间复杂度：<code>O(1)</code>;</p>
+
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(min(n,m))</code>;</li>
+<li>空间复杂度：<code>O(1)</code>;</li>
+</ul>
 
     </div>
 
@@ -458,6 +496,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
