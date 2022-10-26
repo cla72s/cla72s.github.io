@@ -218,7 +218,7 @@
               目前共计 11 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/Markdown/" style="font-size: 12px; color: #ccc">Markdown</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 21px; color: #6f6f6f">二分</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 21px; color: #6f6f6f">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 12px; color: #ccc">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 21px; color: #6f6f6f">哈希表</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12px; color: #ccc">字符串</a> <a href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 12px; color: #ccc">广度优先搜索</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 12px; color: #ccc">深度优先搜索</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 12px; color: #ccc">滑动窗口</a> <a href="/tags/%E8%BF%AD%E4%BB%A3/" style="font-size: 12px; color: #ccc">迭代</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 30px; color: #111">递归</a>
+              <a href="/tags/Markdown/" style="font-size: 12px; color: #cfcfcf">Markdown</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 21px; color: #707070">二分</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 21px; color: #707070">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 12px; color: #cfcfcf">双指针</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 21px; color: #707070">哈希表</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12px; color: #cfcfcf">字符串</a> <a href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 12px; color: #cfcfcf">广度优先搜索</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 12px; color: #cfcfcf">深度优先搜索</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 12px; color: #cfcfcf">滑动窗口</a> <a href="/tags/%E8%BF%AD%E4%BB%A3/" style="font-size: 12px; color: #cfcfcf">迭代</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 30px; color: #111">递归</a>
             </div>
           </div>
         
@@ -236,11 +236,7 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="SOHUCS"></div>
-  </div>
-  
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -412,19 +408,25 @@
 
   
 
-  <script>
-  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
-    var appid = 'cywl8vn3G';
-    var conf = '4688704e829dd38be6901dbc1136b71b';
-    var width = window.innerWidth || document.documentElement.clientWidth;
-    if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
-    } else {
-      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
-    }
-  });
-  </script>
-  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c51ef1366bc7dc47f26',
+      clientSecret: '835493e50b6828af54090298d531d5b6d3972290',
+      repo        : 'aggrandize72.github.io',
+      owner       : 'aggrandize72',
+      admin       : ['aggrandize72'],
+      id          : 'f47af1d1eda4d807b02bba32be15120b',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
