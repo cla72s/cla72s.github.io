@@ -20,22 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一个机器人位于一个 m * n 网格的左上角（起始点在下图中标记为 “Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。 问总共有多少条不同的路径？">
+  <meta name="description" content="数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不同路径">
-<meta property="og:url" content="http://example.com/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/index.html">
+<meta property="og:title" content="数组">
+<meta property="og:url" content="http://example.com/2022/10/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="一个机器人位于一个 m * n 网格的左上角（起始点在下图中标记为 “Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。 问总共有多少条不同的路径？">
+<meta property="og:description" content="数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/robot_maze.png">
-<meta property="article:published_time" content="2022-10-22T16:27:04.000Z">
-<meta property="article:modified_time" content="2022-10-25T15:50:03.402Z">
+<meta property="article:published_time" content="2022-10-30T02:49:46.000Z">
+<meta property="article:modified_time" content="2022-10-30T04:39:37.436Z">
 <meta property="article:author" content="aggrandize72">
-<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/robot_maze.png">
 
-<link rel="canonical" href="http://example.com/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/">
+<link rel="canonical" href="http://example.com/2022/10/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/">
 
 
 <script id="page-configurations">
@@ -48,7 +46,7 @@
   };
 </script>
 
-  <title>不同路径 | aggrandize72's</title>
+  <title>数组 | aggrandize72's</title>
   
 
 
@@ -197,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/WechatIMG146.jpeg">
@@ -210,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          不同路径
+          数组
         </h1>
 
         <div class="post-meta">
@@ -219,23 +217,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-10-23 00:27:04" itemprop="dateCreated datePublished" datetime="2022-10-23T00:27:04+08:00">2022-10-23</time>
+              <time title="创建时间：2022-10-30 10:49:46 / 修改时间：12:39:37" itemprop="dateCreated datePublished" datetime="2022-10-30T10:49:46+08:00">2022-10-30</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-25 23:50:03" itemprop="dateModified" datetime="2022-10-25T23:50:03+08:00">2022-10-25</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构和算法</span></a>
                 </span>
             </span>
 
@@ -250,43 +242,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>一个机器人位于一个 <code>m * n</code> 网格的左上角（起始点在下图中标记为 “Start” ）。</p>
-<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。</p>
-<p>问总共有多少条不同的路径？</p>
+        <p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
 <span id="more"></span>
-
-<p><strong>示例 1：</strong></p>
-<p><img src="/./../img/robot_maze.png"></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">3</span>, <span class="built_in">n</span> = <span class="number">7</span></span><br><span class="line">输出：<span class="number">28</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例 2：</strong></p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">3</span>, n = <span class="number">2</span></span><br><span class="line">输出：<span class="number">3</span></span><br><span class="line">解释：</span><br><span class="line">从左上角开始，总共有 <span class="number">3</span> 条路径可以到达右下角。</span><br><span class="line"><span class="number">1.</span> 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line"><span class="number">2.</span> 向下 -&gt; 向下 -&gt; 向右</span><br><span class="line"><span class="number">3.</span> 向下 -&gt; 向右 -&gt; 向下</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3：</strong></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">7</span>, <span class="built_in">n</span> = <span class="number">3</span></span><br><span class="line">输出：<span class="number">28</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例 4：</strong></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">3</span>, <span class="built_in">n</span> = <span class="number">3</span></span><br><span class="line">输出：<span class="number">6</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="解题思路-一-：动态规划"><a href="#解题思路-一-：动态规划" class="headerlink" title="解题思路(一)：动态规划"></a>解题思路(一)：动态规划</h2><p>用二维数组<code>f(i, j)</code> 表示从左上角走到 <code>(i, j)</code> 的路径数量。</p>
-<p>由于我们每一步只能从向下或者向右移动一步，因此要想走到 <code>(i, j)</code>，如果向下走一步，那么会从 <code>(i-1, j)</code> 走过来；如果向右走一步，那么会从 <code>(i, j-1)</code> 走过来。因此我们可以写出动态规划转移方程：</p>
-<blockquote>
-<p><code>f(i,j) = f(i−1,j) + f(i,j−1)</code></p>
-</blockquote>
-<p>但是由于第一行与第一列在边界，所以只能为 <code>1</code> 。</p>
-<p>简单的来说就像是个杨辉三角。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int uniquePaths(int m, int n) &#123;</span><br><span class="line">    int f<span class="comment">[m]</span><span class="comment">[n]</span>;</span><br><span class="line">    f<span class="comment">[0]</span><span class="comment">[0]</span> = 1;</span><br><span class="line">    for (int i = 0; i &lt; m; ++i) &#123;</span><br><span class="line">        for (int j = 0; j &lt; n; ++j) &#123;</span><br><span class="line">            if(i = 0 &amp;&amp; j &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[0]</span><span class="comment">[j]</span> = f<span class="comment">[0]</span><span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;else if(j = 0 &amp;&amp; i &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[i]</span><span class="comment">[0]</span> = f<span class="comment">[i - 1]</span><span class="comment">[0]</span>;</span><br><span class="line">            &#125;else if(i &gt; 0 &amp;&amp;j &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[i]</span><span class="comment">[j]</span> = f<span class="comment">[i - 1]</span><span class="comment">[j]</span> + f<span class="comment">[i]</span><span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return f<span class="comment">[m - 1]</span><span class="comment">[n - 1]</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(m * n)</code></li>
-<li>空间复杂度：<code>O(m * n)</code></li>
+<h2 id="一、数组的优缺点："><a href="#一、数组的优缺点：" class="headerlink" title="一、数组的优缺点："></a>一、数组的优缺点：</h2><h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>按照索引查询元素速度快；</li>
+<li>能存储大量数据；</li>
+<li>按照索引遍历数组方便；</li>
+<li>数组定义简单，西具访问很方便；</li>
+<li>可以随机访问其中的元素。</li>
 </ul>
-<h2 id="解题思路-二-：排列组合原理"><a href="#解题思路-二-：排列组合原理" class="headerlink" title="解题思路(二)：排列组合原理"></a>解题思路(二)：排列组合原理</h2><p>这个机器人总共需要走 <code>m + n -2</code> 步走到终点。其中有 <code>m - 1</code> 步是向下走的， <code>n - 1</code> 步是向右走的。利用排列组合知识，可以得出总共需要走 C<sub>n-1</sub><sup style="margin-left:-20px">m+n-2</sup> 步，意思就是从 <code>m + n -2</code> 步中选择 <code>n - 1</code> 步向右其余向左。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> unique<span class="constructor">Paths(<span class="params">int</span> <span class="params">m</span>, <span class="params">int</span> <span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//保证n更小。</span></span><br><span class="line">    <span class="keyword">if</span> (m &lt; n)</span><br><span class="line">        return unique<span class="constructor">Paths(<span class="params">n</span> , <span class="params">m</span>)</span>;</span><br><span class="line">    <span class="comment">//计算路径条数</span></span><br><span class="line">    <span class="built_in">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">        ans = ans<span class="operator"> * </span>(m + i - <span class="number">1</span>)<span class="operator"> / </span>i; </span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(min(n,m))</code>;</li>
-<li>空间复杂度：<code>O(1)</code>;</li>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+<li>根据内容查找元素速度慢；</li>
+<li>数组的大小一经确定不能改变，不适合动态存储；</li>
+<li>数组只能存储一种类型的数据；</li>
+<li>增加、删除元素效率慢；</li>
+<li>未封装任何方法，所有操作都需要用户自己定义；</li>
+<li>数组的空间必须是连续的。</li>
 </ul>
+<h2 id="二、数组如何实现随机访问？"><a href="#二、数组如何实现随机访问？" class="headerlink" title="二、数组如何实现随机访问？"></a>二、数组如何实现随机访问？</h2><p>主要取决于数组的特性：</p>
+<ul>
+<li>是一种线性表（Linear List）。</li>
+<li>连续的内存空间和相同类型的数据。</li>
+</ul>
+<p>计算机需要访问某个元素时，需要通过下面的寻址公式，来计算出元素的内存地址以达到随机访问的目的：</p>
+<pre><code>a[i]_address  = base_address + i * data_type_size
+</code></pre>
+<h2 id="三、数组下标为什么不从-1-开始？"><a href="#三、数组下标为什么不从-1-开始？" class="headerlink" title="三、数组下标为什么不从 1 开始？"></a>三、数组下标为什么不从 1 开始？</h2><p>从数组的内存模型上看，数组”下标”最确切的定义是”偏移（offset）”。一般编程时，都是以 a 来表示数组的首地址，a[0] 就是偏移为 0 个位置。a[k] 则表示偏移 k 个 type_size 的位置。</p>
+<p>所以计算 a[k] 的内存地址就要用到这个公式：</p>
+<pre><code>a[k]_address  = base_address + k * data_type_size
+</code></pre>
+<p>若以 1 为下标开始的话 a[k] 内存地址就变为：</p>
+<pre><code>a[k]_address  = base_address + (k - 1) * data_type_size
+</code></pre>
+<p>这样每次访问数组元素时都多了一次减法，对于 CPU 来说，就是相当于多了一次减法指令。数组又作为一个非常基础的数据结构，通过下标随机访问数组元素又是非常常见的编程操作，效率的优化就要尽可能做到极致。所以为了减少一次指令操作，数组就选择以 0 开始编号，而不是 1 开始。</p>
+<p>当然这也不是很绝对，也是有很多语言并不是从 0 开始计数的，例如 Matlab 。甚至还有一些语言支持负数下标，例如 Python 。 </p>
+<h2 id="四、数组的查找、插入和删除。"><a href="#四、数组的查找、插入和删除。" class="headerlink" title="四、数组的查找、插入和删除。"></a>四、数组的查找、插入和删除。</h2><h3 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h3><p>一般 数组的查找的时间复杂度是 O(n) ；</p>
+<p>但对于已经排好序的数组来说，可以利用二分查找，时间复杂度是 O(logn);</p>
+<p>数组是你说根据下标随机访问的时间复杂度为 O(1)。</p>
+<h3 id="插入和删除："><a href="#插入和删除：" class="headerlink" title="插入和删除："></a>插入和删除：</h3><p>因为数组的特性，所以我们插入和删除时也要保证内存数据的连续性。</p>
+<p>这样我们插入和删除两个操作就变得比较的低效。</p>
+<ul>
+<li>最好情况：插入和删除时间复杂度 O(1);（操作数在末尾）</li>
+<li>最坏情况：插入和删除时间复杂度 O(n);（操作数在头部）</li>
+<li>平均情况：插入和删除时间复杂度 O(n)；因为删除每个位置的元素的概率相同，故需要操作次数为（1+2+3+…+n）&#x2F; n &#x3D; (n + 1) &#x2F; 2 ；所以时间复杂度还是 O(n) 。</li>
+</ul>
+<h2 id="五、警惕数组访问越界的问题。"><a href="#五、警惕数组访问越界的问题。" class="headerlink" title="五、警惕数组访问越界的问题。"></a>五、警惕数组访问越界的问题。</h2><p>数组越界在 C 语言中是一种未决行为，并没有规定数组访问越界时编译器应该如何处理。</p>
+<p>因为，访问数组的本质就是访问一段连续内存，只要数组通过偏移计算得到的内存地址是可用的，那么程序就可能不会报任何错误。这种情况下，一般都会出现莫名其妙的逻辑错误。</p>
+<p>而且，很多计算机病毒也正是利用到了代码中的数组越界可以访问非法地址的漏洞，来攻击系统，所以写代码的时候一定要警惕数组越界。但并非所有的语言都像 C 一样，把数组越界检查的工作丢给程序员来做，像 Java 和 Python 本身就会做越界检查，若越界java就会抛出 java.lang.ArrayIndexOutOfBoundsExcept。</p>
 
     </div>
 
@@ -302,7 +304,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" title="不同路径">http://example.com/2022/10/23/算法题/不同路径/</a>
+    <a href="http://example.com/2022/10/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/" title="数组">http://example.com/2022/10/30/数据结构与算法/数组/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -313,7 +315,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
           </div>
 
         
@@ -322,12 +324,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/10/20/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" rel="prev" title="字符串相乘">
-      <i class="fa fa-chevron-left"></i> 字符串相乘
+    <a href="/2022/10/28/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-I/" rel="prev" title="下一个更大元素 I">
+      <i class="fa fa-chevron-left"></i> 下一个更大元素 I
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/" rel="next" title="不同路径II">
-      不同路径II <i class="fa fa-chevron-right"></i>
+    <a href="/2022/10/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/" rel="next" title="链表">
+      链表 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -389,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-%E4%B8%80-%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">解题思路(一)：动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-%E4%BA%8C-%EF%BC%9A%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">解题思路(二)：排列组合原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">一、数组的优缺点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E7%BB%84%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、数组如何实现随机访问？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BB%8E-1-%E5%BC%80%E5%A7%8B%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">三、数组下标为什么不从 1 开始？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E6%9F%A5%E6%89%BE%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">四、数组的查找、插入和删除。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">查找：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">插入和删除：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AD%A6%E6%83%95%E6%95%B0%E7%BB%84%E8%AE%BF%E9%97%AE%E8%B6%8A%E7%95%8C%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">五、警惕数组访问越界的问题。</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -535,7 +537,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'aggrandize72.github.io',
       owner       : 'aggrandize72',
       admin       : ['aggrandize72'],
-      id          : '4a971cb9de4cb2d3436be87b77f29039',
+      id          : '93f5f7fe7b7564ff5d02750a61354560',
         language: 'zh-CN',
       distractionFreeMode: false
     });
