@@ -28,7 +28,7 @@
 <meta property="og:description" content="数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-30T02:49:46.000Z">
-<meta property="article:modified_time" content="2022-10-30T04:39:37.436Z">
+<meta property="article:modified_time" content="2022-10-30T07:13:59.802Z">
 <meta property="article:author" content="aggrandize72">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">20</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-10-30 10:49:46 / 修改时间：12:39:37" itemprop="dateCreated datePublished" datetime="2022-10-30T10:49:46+08:00">2022-10-30</time>
+              <time title="创建时间：2022-10-30 10:49:46 / 修改时间：15:13:59" itemprop="dateCreated datePublished" datetime="2022-10-30T10:49:46+08:00">2022-10-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,22 +244,19 @@
       
         <p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
 <span id="more"></span>
-<h2 id="一、数组的优缺点："><a href="#一、数组的优缺点：" class="headerlink" title="一、数组的优缺点："></a>一、数组的优缺点：</h2><h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
-<li>按照索引查询元素速度快；</li>
-<li>能存储大量数据；</li>
-<li>按照索引遍历数组方便；</li>
-<li>数组定义简单，西具访问很方便；</li>
-<li>可以随机访问其中的元素。</li>
+<h2 id="数组的优缺点："><a href="#数组的优缺点：" class="headerlink" title="数组的优缺点："></a>数组的优缺点：</h2><h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>按照索引查询元素速度快</li>
+<li>能存储大量数据</li>
+<li>按照索引遍历数组方便</li>
 </ul>
 <h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
-<li>根据内容查找元素速度慢；</li>
-<li>数组的大小一经确定不能改变，不适合动态存储；</li>
-<li>数组只能存储一种类型的数据；</li>
-<li>增加、删除元素效率慢；</li>
-<li>未封装任何方法，所有操作都需要用户自己定义；</li>
-<li>数组的空间必须是连续的。</li>
+<li>根据内容查找元素速度慢</li>
+<li>数组的大小一经确定不能改变。</li>
+<li>数组只能存储一种类型的数据</li>
+<li>增加、删除元素效率慢</li>
+<li>未封装任何方法，所有操作都需要用户自己定义。</li>
 </ul>
-<h2 id="二、数组如何实现随机访问？"><a href="#二、数组如何实现随机访问？" class="headerlink" title="二、数组如何实现随机访问？"></a>二、数组如何实现随机访问？</h2><p>主要取决于数组的特性：</p>
+<h2 id="数组如何实现随机访问？"><a href="#数组如何实现随机访问？" class="headerlink" title="数组如何实现随机访问？"></a>数组如何实现随机访问？</h2><p>主要取决于数组的特性：</p>
 <ul>
 <li>是一种线性表（Linear List）。</li>
 <li>连续的内存空间和相同类型的数据。</li>
@@ -267,7 +264,7 @@
 <p>计算机需要访问某个元素时，需要通过下面的寻址公式，来计算出元素的内存地址以达到随机访问的目的：</p>
 <pre><code>a[i]_address  = base_address + i * data_type_size
 </code></pre>
-<h2 id="三、数组下标为什么不从-1-开始？"><a href="#三、数组下标为什么不从-1-开始？" class="headerlink" title="三、数组下标为什么不从 1 开始？"></a>三、数组下标为什么不从 1 开始？</h2><p>从数组的内存模型上看，数组”下标”最确切的定义是”偏移（offset）”。一般编程时，都是以 a 来表示数组的首地址，a[0] 就是偏移为 0 个位置。a[k] 则表示偏移 k 个 type_size 的位置。</p>
+<h2 id="数组下标为什么不从-1-开始？"><a href="#数组下标为什么不从-1-开始？" class="headerlink" title="数组下标为什么不从 1 开始？"></a>数组下标为什么不从 1 开始？</h2><p>从数组的内存模型上看，数组”下标”最确切的定义是”偏移（offset）”。一般编程时，都是以 a 来表示数组的首地址，a[0] 就是偏移为 0 个位置。a[k] 则表示偏移 k 个 type_size 的位置。</p>
 <p>所以计算 a[k] 的内存地址就要用到这个公式：</p>
 <pre><code>a[k]_address  = base_address + k * data_type_size
 </code></pre>
@@ -276,7 +273,7 @@
 </code></pre>
 <p>这样每次访问数组元素时都多了一次减法，对于 CPU 来说，就是相当于多了一次减法指令。数组又作为一个非常基础的数据结构，通过下标随机访问数组元素又是非常常见的编程操作，效率的优化就要尽可能做到极致。所以为了减少一次指令操作，数组就选择以 0 开始编号，而不是 1 开始。</p>
 <p>当然这也不是很绝对，也是有很多语言并不是从 0 开始计数的，例如 Matlab 。甚至还有一些语言支持负数下标，例如 Python 。 </p>
-<h2 id="四、数组的查找、插入和删除。"><a href="#四、数组的查找、插入和删除。" class="headerlink" title="四、数组的查找、插入和删除。"></a>四、数组的查找、插入和删除。</h2><h3 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h3><p>一般 数组的查找的时间复杂度是 O(n) ；</p>
+<h2 id="数组的查找、插入和删除。"><a href="#数组的查找、插入和删除。" class="headerlink" title="数组的查找、插入和删除。"></a>数组的查找、插入和删除。</h2><h3 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h3><p>一般 数组的查找的时间复杂度是 O(n) ；</p>
 <p>但对于已经排好序的数组来说，可以利用二分查找，时间复杂度是 O(logn);</p>
 <p>数组是你说根据下标随机访问的时间复杂度为 O(1)。</p>
 <h3 id="插入和删除："><a href="#插入和删除：" class="headerlink" title="插入和删除："></a>插入和删除：</h3><p>因为数组的特性，所以我们插入和删除时也要保证内存数据的连续性。</p>
@@ -286,7 +283,7 @@
 <li>最坏情况：插入和删除时间复杂度 O(n);（操作数在头部）</li>
 <li>平均情况：插入和删除时间复杂度 O(n)；因为删除每个位置的元素的概率相同，故需要操作次数为（1+2+3+…+n）&#x2F; n &#x3D; (n + 1) &#x2F; 2 ；所以时间复杂度还是 O(n) 。</li>
 </ul>
-<h2 id="五、警惕数组访问越界的问题。"><a href="#五、警惕数组访问越界的问题。" class="headerlink" title="五、警惕数组访问越界的问题。"></a>五、警惕数组访问越界的问题。</h2><p>数组越界在 C 语言中是一种未决行为，并没有规定数组访问越界时编译器应该如何处理。</p>
+<h2 id="警惕数组访问越界的问题。"><a href="#警惕数组访问越界的问题。" class="headerlink" title="警惕数组访问越界的问题。"></a>警惕数组访问越界的问题。</h2><p>数组越界在 C 语言中是一种未决行为，并没有规定数组访问越界时编译器应该如何处理。</p>
 <p>因为，访问数组的本质就是访问一段连续内存，只要数组通过偏移计算得到的内存地址是可用的，那么程序就可能不会报任何错误。这种情况下，一般都会出现莫名其妙的逻辑错误。</p>
 <p>而且，很多计算机病毒也正是利用到了代码中的数组越界可以访问非法地址的漏洞，来攻击系统，所以写代码的时候一定要警惕数组越界。但并非所有的语言都像 C 一样，把数组越界检查的工作丢给程序员来做，像 Java 和 Python 本身就会做越界检查，若越界java就会抛出 java.lang.ArrayIndexOutOfBoundsExcept。</p>
 
@@ -391,7 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">一、数组的优缺点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E7%BB%84%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、数组如何实现随机访问？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BB%8E-1-%E5%BC%80%E5%A7%8B%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">三、数组下标为什么不从 1 开始？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E6%9F%A5%E6%89%BE%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">四、数组的查找、插入和删除。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">查找：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">插入和删除：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AD%A6%E6%83%95%E6%95%B0%E7%BB%84%E8%AE%BF%E9%97%AE%E8%B6%8A%E7%95%8C%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">五、警惕数组访问越界的问题。</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">数组的优缺点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">数组如何实现随机访问？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BB%8E-1-%E5%BC%80%E5%A7%8B%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">数组下标为什么不从 1 开始？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E6%9F%A5%E6%89%BE%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">数组的查找、插入和删除。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">查找：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">插入和删除：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AD%A6%E6%83%95%E6%95%B0%E7%BB%84%E8%AE%BF%E9%97%AE%E8%B6%8A%E7%95%8C%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">警惕数组访问越界的问题。</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -407,7 +404,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
