@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">25</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">26</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -187,6 +187,128 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/WechatIMG146.jpeg">
+      <meta itemprop="name" content="aggrandize72">
+      <meta itemprop="description" content="哦 豁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aggrandize72's">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/02/%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">根据身高重建队列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-02 20:51:33 / 修改时间：21:07:13" itemprop="dateCreated datePublished" datetime="2022-11-02T20:51:33+08:00">2022-11-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>假设有打乱顺序的一群人站成一个队列，数组 <code>people</code> 表示队列中一些人的属性（不一定按顺序）。每个 <code>people[i] = [hi, ki]</code> 表示第 <code>i</code> 个人的身高为 <code>hi</code> ，前面 正好 有 <code>ki</code> 个身高大于或等于 <code>hi</code> 的人。</p>
+<p>请你重新构造并返回输入数组 <code>people</code> 所表示的队列。返回的队列应该格式化为数组 <code>queue</code> ，其中 <code>queue[j] = [hj, kj]</code> 是队列中第 <code>j</code> 个人的属性（<code>queue[0]</code> 是排在队列前面的人）。</p>
+<p>示例 1：</p>
+<pre><code>输入：people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
+输出：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]
+解释：
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：people = [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]
+输出：[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]
+</code></pre>
+<h2 id="思路：先排好高的人再排低的"><a href="#思路：先排好高的人再排低的" class="headerlink" title="思路：先排好高的人再排低的"></a>思路：先排好高的人再排低的</h2><p>这个思路意思大概就是，我人高，看不见比我矮的人，比我矮的都可以无视。</p>
+<p>所以首先，把数组 <code>people</code> 按身高进行排序，（[7,0] 得排在 [7,1] 前面）。</p>
+<p>然后就只需要看 <code>ki</code> 的值，它的值为多少就排在第几。</p>
+<p>比如 <code>[[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]</code> 这五的人需要排队。</p>
+<p>我们先按高矮将他们排一次。</p>
+<p>排成了这样 <code>[[7,0],[7,1],[6,1],[5,0],[5,2],[4,4]]</code></p>
+<p>然后只需要看 <code>ki</code> 值，他的值为多少，我们就插入至哪个位置。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>int cmp(const void* _a, const void* _b) &#123;
+    int *a = *(int**)_a, *b = *(int**)_b;
+    return a[0] == b[0] ? a[1] - b[1] : b[0] - a[0];
+&#125;
+
+int** reconstructQueue(int** people, int peopleSize, int* peopleColSize, int* returnSize, int** returnColumnSizes) &#123;
+    //将数组 people 按高矮进行排序。
+    qsort(people, peopleSize, sizeof(int*), cmp);
+    int** ans = malloc(sizeof(int*) * peopleSize);
+    *returnSize = 0;
+    *returnColumnSizes = malloc(sizeof(int) * peopleSize);
+
+    for (int i = 0; i &lt; peopleSize; i++) &#123;
+        (*returnColumnSizes)[i] = 2;
+    &#125;
+    //现在开始插队
+    for (int i = 0; i &lt; peopleSize; ++i) &#123;
+        int* person = people[i];
+        (*returnSize)++;
+        // 将 ki 位置腾出来，让该学生插入。
+        for (int j = (*returnSize) - 1; j &gt; person[1]; j--) &#123;
+            ans[j] = ans[j - 1];
+        &#125;
+        int* temp = malloc(sizeof(int) * 2);
+        // temp 用来保存 该学生的数据。
+        temp[0] = person[0], temp[1] = person[1];
+        // 插入队伍
+        ans[person[1]] = temp;
+    &#125;
+    return ans;
+&#125;
+</code></pre>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(n^2)</code>。</li>
+<li>空间复杂度：<code>O(n)</code>。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -851,87 +973,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/28/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/WechatIMG146.jpeg">
-      <meta itemprop="name" content="aggrandize72">
-      <meta itemprop="description" content="哦 豁">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="aggrandize72's">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/28/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/" class="post-title-link" itemprop="url">子数组的最小值之和</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-10-28 08:41:50" itemprop="dateCreated datePublished" datetime="2022-10-28T08:41:50+08:00">2022-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-30 08:09:33" itemprop="dateModified" datetime="2022-10-30T08:09:33+08:00">2022-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>给定一个整数数组 <code>arr</code>，找到 <code>min(b)</code> 的总和，其中 <code>b</code> 的范围为 <code>arr</code> 的每个（连续）子数组。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/28/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1003,7 +1044,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
