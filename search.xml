@@ -72,9 +72,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 滑动窗口 </tag>
+            
+            <tag> hash表 </tag>
             
         </tags>
       
@@ -190,6 +190,18 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> 数据结构和算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -345,7 +357,7 @@
             
             <tag> 栈 </tag>
             
-            <tag> 哈希表 </tag>
+            <tag> hash表 </tag>
             
         </tags>
       
@@ -453,11 +465,11 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 字符串 </tag>
             
             <tag> 滑动窗口 </tag>
+            
+            <tag> hash表 </tag>
             
         </tags>
       
@@ -559,7 +571,7 @@
             
             <tag> 数组 </tag>
             
-            <tag> 哈希表 </tag>
+            <tag> hash表 </tag>
             
         </tags>
       
