@@ -20,17 +20,24 @@
     var CONFIG = {"hostname":"caoxing.run","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="哦 豁">
-<meta property="og:type" content="website">
-<meta property="og:title" content="aggrandize72&#39;s">
-<meta property="og:url" content="http://caoxing.run/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/index.html">
+  <meta name="description" content="有两种形状的瓷砖：一种是 2 x 1 的多米诺形，另一种是形如 &quot;L&quot; 的托米诺形。两种形状都可以旋转。  给定整数 n ，返回可以平铺 2 x n 的面板的方法的数量。返回对 109 + 7 取模 的值。 平铺指的是每个正方形都必须有瓷砖覆盖。两个平铺不同，当且仅当面板上有四个方向上的相邻单元中的两个，使得恰好有一个平铺有一个瓷砖占据两个正方形。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多米诺和托米诺平铺">
+<meta property="og:url" content="http://caoxing.run/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="哦 豁">
+<meta property="og:description" content="有两种形状的瓷砖：一种是 2 x 1 的多米诺形，另一种是形如 &quot;L&quot; 的托米诺形。两种形状都可以旋转。  给定整数 n ，返回可以平铺 2 x n 的面板的方法的数量。返回对 109 + 7 取模 的值。 平铺指的是每个正方形都必须有瓷砖覆盖。两个平铺不同，当且仅当面板上有四个方向上的相邻单元中的两个，使得恰好有一个平铺有一个瓷砖占据两个正方形。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://caoxing.run/img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA1.jpg">
+<meta property="og:image" content="http://caoxing.run/img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA2.jpg">
+<meta property="article:published_time" content="2022-11-12T10:42:26.000Z">
+<meta property="article:modified_time" content="2022-11-12T13:31:31.525Z">
 <meta property="article:author" content="aggrandize72">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="矩阵快速幂">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://caoxing.run/img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA1.jpg">
 
-<link rel="canonical" href="http://caoxing.run/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="http://caoxing.run/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/">
 
 
 <script id="page-configurations">
@@ -38,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 回溯算法 | aggrandize72's</title>
+  <title>多米诺和托米诺平铺 | aggrandize72's</title>
   
 
 
@@ -134,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">30</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">32</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,57 +192,152 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">回溯算法
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/WechatIMG146.jpeg">
+      <meta itemprop="name" content="aggrandize72">
+      <meta itemprop="description" content="哦 豁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aggrandize72's">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多米诺和托米诺平铺
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-12 18:42:26 / 修改时间：21:31:31" itemprop="dateCreated datePublished" datetime="2022-11-12T18:42:26+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>有两种形状的瓷砖：一种是 <code>2 x 1</code> 的多米诺形，另一种是形如 <code>&quot;L&quot;</code> 的托米诺形。两种形状都可以旋转。</p>
+<p><img src="/./img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA1.jpg"></p>
+<p>给定整数 <code>n</code> ，返回可以平铺 <code>2 x n</code> 的面板的方法的数量。返回对 <code>109 + 7</code> 取模 的值。</p>
+<p>平铺指的是每个正方形都必须有瓷砖覆盖。两个平铺不同，当且仅当面板上有四个方向上的相邻单元中的两个，使得恰好有一个平铺有一个瓷砖占据两个正方形。</p>
+<span id="more"></span>
+<p><strong>示例 1:</strong></p>
+<p><img src="/./img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA2.jpg"></p>
+<pre><code>输入: n = 3
+输出: 5
+解释: 五种不同的方法如上所示。
+</code></pre>
+<p><strong>示例 2:</strong></p>
+<pre><code>输入: n = 1
+输出: 1
+</code></pre>
+<h2 id="思路一：动态规划"><a href="#思路一：动态规划" class="headerlink" title="思路一：动态规划"></a>思路一：动态规划</h2><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
+public:
+    int numTilings(int n) &#123;
+        int mod = int(1e9 + 7);
+        vector&lt;vector&lt;int&gt;&gt; dp(n + 1, vector&lt;int&gt;(4));
+        dp[0][3] = 1;
+        for (int i = 1;i &lt;= n;i++)&#123;
+            dp[i][0] = dp[i-1][3];
+            dp[i][1] = (dp[i-1][0] + dp[i-1][2])%mod;
+            dp[i][2] = (dp[i-1][0] + dp[i-1][1])%mod;
+            dp[i][3] = (dp[i-1][0] + dp[i-1][1] + dp[i-1][2] + dp[i-1][3])%mod;
+        &#125; 
+        return dp[n][3];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(n)</code> 经历了个 for 循环。</li>
+<li>空间复杂度：<code>O(n)</code> 创建了个数组 dp 用来搞动态规划方程。</li>
+</ul>
+<h2 id="思路二：矩阵快速幂"><a href="#思路二：矩阵快速幂" class="headerlink" title="思路二：矩阵快速幂"></a>思路二：矩阵快速幂</h2><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-01T23:57:01+08:00"
-              content="2022-11-01">
-          11-01
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>aggrandize72
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://caoxing.run/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/" title="多米诺和托米诺平铺">http://caoxing.run/2022/11/12/算法题/多米诺和托米诺平铺/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/01/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" itemprop="url">
-            <span itemprop="name">分割回文串</span>
-          </a>
-      </div>
 
-    </header>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+              <a href="/tags/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag"># 矩阵快速幂</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/08/%E7%AE%97%E6%B3%95%E9%A2%98/%E7%BB%9F%E8%AE%A1%E4%B8%80%E8%87%B4%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%95%B0%E7%9B%AE/" rel="prev" title="统计一致字符串的数目">
+      <i class="fa fa-chevron-left"></i> 统计一致字符串的数目
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="next" title="算法：矩阵快速幂">
+      算法：矩阵快速幂 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -282,6 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">思路一：动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="nav-number">2.</span> <span class="nav-text">思路二：矩阵快速幂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="nav-number">2.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -297,7 +400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -416,6 +519,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c51ef1366bc7dc47f26',
+      clientSecret: '0b46978b6972a27390e6d6a5bd059fd58126861c',
+      repo        : 'aggrandize72.github.io',
+      owner       : 'aggrandize72',
+      admin       : ['aggrandize72'],
+      id          : '6a92f9eb2b1b12bd63c9c22f8e3b34cc',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

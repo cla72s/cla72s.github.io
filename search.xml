@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>算法：矩阵快速幂</title>
+      <link href="/2022/11/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+      <url>/2022/11/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+      
+        <content type="html"><![CDATA[<p>矩阵快速幂通常是用来降低动态规划的一个算法</p><span id="more"></span><h2 id="聊下快速幂："><a href="#聊下快速幂：" class="headerlink" title="聊下快速幂："></a>聊下快速幂：</h2><p>先看下下面两个函数：</p><pre><code>int pow(int a,int n)&#123;    int ret = 1;    while (n--)&#123;        ret *= a;    &#125;    return ret;&#125;int quickPow(int a,int n)&#123;    int ret = 1;    int temp = a;    while (n)&#123;        if (n&amp;1) ret *= temp;        temp *= temp;        n &gt;&gt;= 1;     &#125;    return ret;&#125;</code></pre><p>通常我们求一个数的 <code>n</code> 次方，自己笔算一般都是按照第一个函数 <code>pow</code> 的算法进行计算，那么就需要<code>O(n)</code> 的时间复杂度。那么现在快速幂就是第二种函数 <code>quickPow</code> ，它将这个时间复杂度降到了 <code>O(logn)</code> 。</p><p>具体先来看下函数 <code>quickPow</code> 如何求 2 的 47 次方的：</p><p>首先把 2<sup>47</sup> 的 47 看成用二进制数 101111。</p><p>也就有： 2<sup>101111</sup> &#x3D; 2<sup>100000</sup> * 2<sup>1000</sup> * 2<sup>100</sup> * 2<sup>10</sup> * 2<sup>1</sup></p><p>原数即：2<sup>47</sup> &#x3D; 2<sup>32</sup> * 2<sup>8</sup> * 2<sup>4</sup> * 2<sup>2</sup> * 2<sup>1</sup></p><p>现在用 <code>temp</code> 这个变量保存从低位到高位的每一个次方值。</p><p>现在将二进制数 <code>101111</code> 看成位图。</p><p>将二进制数进行右移一位，个位为 <code>1</code> 的位 <code>temp</code> 就乘进去，为 <code>0</code> 的那位就跳过。直至二进制数为 <code>0</code> 。</p><h2 id="矩阵快速幂的实际运用："><a href="#矩阵快速幂的实际运用：" class="headerlink" title="矩阵快速幂的实际运用："></a>矩阵快速幂的实际运用：</h2><p>斐波那契数列很容易想到用递归或者动态规划进行求第 n 项。那么我们现在用矩阵快速幂来看看，这个怎么求：</p><p>斐波那契数列：a<sub>1</sub> ，a<sub>2</sub> ，a<sub>3</sub> ，a<sub>4</sub> …… a<sub>n</sub></p><p>有以下这个公式：</p><blockquote><p>a<sub>n</sub> &#x3D; a<sub>n - 1</sub> + a<sub>n - 2</sub>;</p></blockquote><p>那么我们现在看下面的矩阵乘法：</p><p><img src="/./img/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82.png"></p><p>现在可以把 a<sub>n - 1</sub> 和 a<sub>n - 2</sub> 分别看成 A 和 B ，那么右边的 A + B 就成了 a<sub>n</sub> 。</p><p>用此递推公式就可以利用第一项求出第 n 项。</p><p><img src="/./img/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%821.png"></p><p>这样就只需要求左边矩阵的 n 次幂。</p><p>现在就是求矩阵的快速幂，将原来的底数换成了矩阵。</p><p>现在来看下该矩阵的快速幂函数：</p><pre><code>// 矩阵乘法函数vector&lt;vector&lt;long&gt;&gt; matrixMultiply(vector&lt;vector&lt;long&gt;&gt; &amp;a,vector&lt;vector&lt;long&gt;&gt; &amp;b)&#123;        vector &lt;vector&lt;long&gt;&gt; ret&#123;&#123;0,0&#125;,&#123;0,0&#125;&#125;;        for (int i = 0;i &lt; 2;i++)&#123;            for (int j = 0;j &lt; 2;j++)&#123;                for (int k = 0;k &lt; 2;k++)&#123;                    ret[i][j] += a[i][k] * b[k][j];                &#125;            &#125;        &#125;        return ret;    &#125;// 矩阵快速幂函数：vector&lt;vector&lt;long&gt;&gt; matrixQuickPow(vector&lt;vector&lt;long&gt;&gt; &amp;a,int n)&#123;    vector&lt;vector&lt;long&gt;&gt; ret&#123;&#123;1,0&#125;,&#123;0,1&#125;&#125;;    while (n)&#123;        if (n&amp;1)ret = matrixMultiply(ret,a);        a = matrixMultiply(a,a);        n &gt;&gt;= 1;    &#125;    return ret;&#125;int main()&#123;    vector&lt;vector&lt;long&gt;&gt; ret&#123;&#123;1,1&#125;,&#123;1,0&#125;&#125;;    vector&lt;vector&lt;long&gt;&gt; res = matrixQuickPow(ret,n);    return res;&#125;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(logn)</code> 。</li><li>空间复杂度：<code>O(1)</code> 。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构与算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 矩阵快速幂 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多米诺和托米诺平铺</title>
+      <link href="/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/"/>
+      <url>/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/</url>
+      
+        <content type="html"><![CDATA[<p>有两种形状的瓷砖：一种是 <code>2 x 1</code> 的多米诺形，另一种是形如 <code>&quot;L&quot;</code> 的托米诺形。两种形状都可以旋转。</p><p><img src="/./img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA1.jpg"></p><p>给定整数 <code>n</code> ，返回可以平铺 <code>2 x n</code> 的面板的方法的数量。返回对 <code>109 + 7</code> 取模 的值。</p><p>平铺指的是每个正方形都必须有瓷砖覆盖。两个平铺不同，当且仅当面板上有四个方向上的相邻单元中的两个，使得恰好有一个平铺有一个瓷砖占据两个正方形。</p><span id="more"></span><p><strong>示例 1:</strong></p><p><img src="/./img/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA2.jpg"></p><pre><code>输入: n = 3输出: 5解释: 五种不同的方法如上所示。</code></pre><p><strong>示例 2:</strong></p><pre><code>输入: n = 1输出: 1</code></pre><h2 id="思路一：动态规划"><a href="#思路一：动态规划" class="headerlink" title="思路一：动态规划"></a>思路一：动态规划</h2><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    int numTilings(int n) &#123;        int mod = int(1e9 + 7);        vector&lt;vector&lt;int&gt;&gt; dp(n + 1, vector&lt;int&gt;(4));        dp[0][3] = 1;        for (int i = 1;i &lt;= n;i++)&#123;            dp[i][0] = dp[i-1][3];            dp[i][1] = (dp[i-1][0] + dp[i-1][2])%mod;            dp[i][2] = (dp[i-1][0] + dp[i-1][1])%mod;            dp[i][3] = (dp[i-1][0] + dp[i-1][1] + dp[i-1][2] + dp[i-1][3])%mod;        &#125;         return dp[n][3];    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(n)</code> 经历了个 for 循环。</li><li>空间复杂度：<code>O(n)</code> 创建了个数组 dp 用来搞动态规划方程。</li></ul><h2 id="思路二：矩阵快速幂"><a href="#思路二：矩阵快速幂" class="headerlink" title="思路二：矩阵快速幂"></a>思路二：矩阵快速幂</h2><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> 矩阵快速幂 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>统计一致字符串的数目</title>
       <link href="/2022/11/08/%E7%AE%97%E6%B3%95%E9%A2%98/%E7%BB%9F%E8%AE%A1%E4%B8%80%E8%87%B4%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%95%B0%E7%9B%AE/"/>
       <url>/2022/11/08/%E7%AE%97%E6%B3%95%E9%A2%98/%E7%BB%9F%E8%AE%A1%E4%B8%80%E8%87%B4%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%95%B0%E7%9B%AE/</url>
@@ -149,7 +201,7 @@
             
             <tag> 深度优先搜索 </tag>
             
-            <tag> 回溯算法 </tag>
+            <tag> 回溯 </tag>
             
         </tags>
       
@@ -167,7 +219,7 @@
       
       <categories>
           
-          <category> 数据结构和算法 </category>
+          <category> 数据结构与算法 </category>
           
       </categories>
       
@@ -192,7 +244,7 @@
       
       <categories>
           
-          <category> 数据结构和算法 </category>
+          <category> 数据结构与算法 </category>
           
       </categories>
       
@@ -296,7 +348,7 @@
       
       <categories>
           
-          <category> 数据结构和算法 </category>
+          <category> 数据结构与算法 </category>
           
       </categories>
       
@@ -321,7 +373,7 @@
       
       <categories>
           
-          <category> 数据结构和算法 </category>
+          <category> 数据结构与算法 </category>
           
       </categories>
       
