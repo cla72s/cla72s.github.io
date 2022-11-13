@@ -458,7 +458,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-13 22:26:21" itemprop="dateModified" datetime="2022-11-13T22:26:21+08:00">2022-11-13</time>
+                <time title="修改时间：2022-11-13 22:29:08" itemprop="dateModified" datetime="2022-11-13T22:29:08+08:00">2022-11-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -482,116 +482,14 @@
 
       
           <p>现在开始 c++ 的学习，因为发现 c 库中的函数太少，自己又比较的懒，自己不愿封装函数，又看到他人的代码那么简洁，所以开始了 C++ 学习。接下来粗略的记录一些 c++ 与 c 不同的地方。</p>
-<h2 id="进入C"><a href="#进入C" class="headerlink" title="进入C++"></a>进入C++</h2><p>C 语言的所有语句都能放在 C++ 中运行。C++ 对 C 语言中的很多语句进行了补充。</p>
-<h3 id="main-函数："><a href="#main-函数：" class="headerlink" title="main 函数："></a>main 函数：</h3><p>在 C 语言中每个 main 函数都要在结尾添加 return 0; 语句以便给操作系统检查，该程序是否运行出错。由于程序员要在 C 中每个 main 函数都要填加 return 0; 给许多的程序员造成了一定的烦恼。所以 C++ 编译器让程序员可以不用输入 return 0; 在程序运行时自动添加上 return 0; 语句。</p>
-<h3 id="输入输出语句："><a href="#输入输出语句：" class="headerlink" title="输入输出语句："></a>输入输出语句：</h3><p>C 中的输入输出是以函数的形式存在。C++ 增加了流的概念，将输入设备和输出设备看成一个流。</p>
-<p>在 C++ 中：</p>
-<pre><code>cout &lt;&lt; endl;   // endl 与 &quot;\n&quot; 等价。
-cin &gt;&gt; x ;      // x 为变量。
-//&lt;&lt; 和 &gt;&gt; 表示了设备流的流向
-</code></pre>
-<h3 id="字符串读取："><a href="#字符串读取：" class="headerlink" title="字符串读取："></a>字符串读取：</h3><p>在 C++ 中：</p>
-<pre><code>cin.getline();
-cin.get();
-//两者区别：
-//getline() : 读取一行到换行符为止，然后将换行符丢弃。
-//get() : 读取一行到换行符为止，然后将换行符保留在输入流中。
-</code></pre>
-<h3 id="赋值："><a href="#赋值：" class="headerlink" title="赋值："></a>赋值：</h3><p>在 C++ 中：</p>
-<pre><code>int x = 5;  //与下面的全都等价。
-int x(5);
-int x&#123;5&#125;;
-int x = &#123;5&#125;;
-</code></pre>
-<h3 id="引入头文件"><a href="#引入头文件" class="headerlink" title="引入头文件"></a>引入头文件</h3><p>C 中的头文件都是 <code>&lt;string.h&gt;</code> 有个 <code>.h</code> 结尾。在 C++ 中将这些头文件进行了改变。改成了前缀 c 。例如：<code>&lt;cstring&gt;</code></p>
-<h3 id="auto-的重新定义："><a href="#auto-的重新定义：" class="headerlink" title="auto 的重新定义："></a>auto 的重新定义：</h3><p>C 语言中 auto 是一个关键字，在 C++ 中 auto 是一个自动类型推断功能。</p>
-<p>如：</p>
-<pre><code>auto x = 0;         // x 的数据类型就会被指定为 int 
-auto y = 0.0;       // y 的数据类型就会被指定为 double
-auto z = 1.3e12L;   // z 的数据类型就会被指定为 long
-</code></pre>
-<h3 id="强制转换："><a href="#强制转换：" class="headerlink" title="强制转换："></a>强制转换：</h3><p>将一个数据类型进行强制转换：</p>
-<pre><code>(typeName) value;    // C中的
-typeName (value);    // C++ 中新增的
-</code></pre>
-<p>C++ 中的格式让读者看起来像是使用了一个函数。</p>
-<p>推广：</p>
-<pre><code>static_cast&lt;typeName&gt; (value);
-</code></pre>
-<h3 id="结构体："><a href="#结构体：" class="headerlink" title="结构体："></a>结构体：</h3><p>在 C++ 中减少了 typedef 的使用。</p>
-<p>代码：</p>
-<pre><code>struct guest &#123;
-    char name[20];
-    float weight;
-&#125;;
-// 想要申请结构可以省略 struct 
-guest g ;
-</code></pre>
-<p>C++ 中的结构体也满足赋值的赋值形式：</p>
-<pre><code>guest g &#123;&quot;caoxing&quot;,60&#125;;     //这样就是一一对于结构体里面的值
-</code></pre>
-<h3 id="指针："><a href="#指针：" class="headerlink" title="指针："></a>指针：</h3><p>C++ 新添了 new 语句。可以替代 c 中的 malloc 。</p>
-<pre><code>int* x = (int*) malloc(sizeof(int)); 
-//可以用下面语句代替。
-int* x = new int;
-//数组：
-int* x = (int*) malloc(sizeof(int) * 10);   
-//可以用下面语句代替
-int* x = new int [10];
-</code></pre>
-<p>但是在 C++ 中使用的 new 分配内存一定要配对一个 delete ;</p>
-<pre><code>int* ps = new int; 
-...
-delete ps; // ps 还是可以使用，只是删除了 new 分配的内存。
-</code></pre>
-<h2 id="C-中的-一些类"><a href="#C-中的-一些类" class="headerlink" title="C++ 中的 一些类"></a>C++ 中的 一些类</h2><h3 id="string-类："><a href="#string-类：" class="headerlink" title="string 类："></a>string 类：</h3><p>string类 是一种字符串的替代品。</p>
-<pre><code>string str1;       //定义一个 str1 对象、以动态分配内存，不需要指明大小。
-string str2 = &quot;jaguar&quot;;
-string str3 = &quot;ocelot&quot;;
-str1 = str2 + str3; // 可以用 + 拼接两个 string 对象
-str2 += str3;       // 这样也是可以的
-</code></pre>
-<p>string类 的 I&#x2F;O：</p>
-<pre><code>string str;         // 起初创建时，str 的长度为 0 
-getline(cin,str);   // 从输入流中得到一个字符串。
-cout &lt;&lt; str.size(); // 输出 str 的长度
-</code></pre>
-<h3 id="vector-类-和-array-类："><a href="#vector-类-和-array-类：" class="headerlink" title="vector 类 和 array 类："></a>vector 类 和 array 类：</h3><p>模板类 vector 和 array 是数组的替代品。</p>
-<ul>
-<li>模板类 vector ：</li>
-</ul>
-<p>模板类 vector 和 string 类相似，都是动态分配内存。</p>
-<pre><code>vector&lt;typeName&gt; vt(n_elem);     
-// vt 是一个 vector&lt;typeName&gt; 对象,储存的个数为 n_elem 
-// 在插入 或者添加时会自动调整长度。
-</code></pre>
-<ul>
-<li>模板类 array ：</li>
-</ul>
-<p>它是 C++ 11 新增的一个类。相比于 vector 类，他是一个静态内存分配的类，vector 形成动态分配产生了代价，使得其效率比较低。所以 array 对象 与数组一样，长度固定，效率和数组一样，但更方便、更安全。</p>
-<p>下面声明创建一个名为 arr 的 array 对象，它包含 n_elem 个类型为 typeName 的元素。</p>
-<pre><code>array&lt;typeName, n_elem&gt; arr;    // n_elem 不能为变量
-// 也可以初始化变量
-array&lt;double, 4&gt; ad = &#123;1.2, 2.1, 3.43, 4.3&#125;;
-</code></pre>
-<p>数组、vector 对象 、 array 对象 的相同与不同：</p>
-<ul>
-<li><p>相同点： 都可以用标准的数组表示法来访问各个元素。</p>
-</li>
-<li><p>不同点：</p>
-</li>
-</ul>
-<ol>
-<li>array 对象和 数组都保存在 栈内存 中，vector 对象保存在 堆内存 或者 自由存储区 中。</li>
-<li>array 对象可以直接赋值给另一个对象，而对于数组只能逐元素赋值。</li>
-</ol>
-<p>数组 、 vector 对象 和 array 对象 的 for 循环（类似于java 的 for - each 循环）：</p>
-<pre><code>double prices[5] = &#123;4.99, 10.99, 6.87, 7.99, 8.49&#125;
-for (double x : prices)&#123;
-    cout &lt;&lt; x &lt;&lt; endl ;
-&#125;
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/09/C++/%E5%BC%80%E5%A7%8BC++/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
