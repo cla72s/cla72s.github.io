@@ -8,9 +8,21 @@
       <link href="/2022/11/13/%E7%AE%97%E6%B3%95%E9%A2%98/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/"/>
       <url>/2022/11/13/%E7%AE%97%E6%B3%95%E9%A2%98/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>给定两个字符串 <code>order</code> 和 <code>s</code> 。<code>order</code> 的所有单词都是 唯一 的，并且以前按照一些自定义的顺序排序。</p><p>对 <code>s</code> 的字符进行置换，使其与排序的 <code>order</code> 相匹配。更具体地说，如果在 <code>order</code> 中的字符 x 出现字符 y 之前，那么在排列后的字符串中， x 也应该出现在 y 之前。</p><p>返回 满足这个性质的 <code>s</code> 的任意排列 。</p><span id="more"></span><p>示例 1:</p><pre><code>输入: order = &quot;cba&quot;, s = &quot;abcd&quot;输出: &quot;cbad&quot;解释: “a”、“b”、“c”是按顺序出现的，所以“a”、“b”、“c”的顺序应该是“c”、“b”、“a”。因为“d”不是按顺序出现的，所以它可以在返回的字符串中的任何位置。“dcba”、“cdba”、“cbda”也是有效的输出。</code></pre><p>示例 2:</p><pre><code>输入: order = &quot;cbafg&quot;, s = &quot;abcd&quot;输出: &quot;cbad&quot;</code></pre><p>提示:</p><p><code>1 &lt;= order.length &lt;= 26</code><br><code>1 &lt;= s.length &lt;= 200</code><br><code>order</code> 和 <code>s</code> 由小写英文字母组成<br><code>order</code> 中的所有字符都 不同</p><h2 id="思路：计数排序"><a href="#思路：计数排序" class="headerlink" title="思路：计数排序"></a>思路：计数排序</h2><p>主要分为这几步：</p><ol><li>将 <code>order</code> 字符串中存在的 字符全用 <code>hash</code> 表记录下来。</li><li>将 <code>s</code> 遍历，计数 <code>order</code> 字符串每个在 <code>s</code> 中出现的个数，并将 <code>s</code> 中未出现在 <code>order</code> 中的字符先输入到 <code>ans</code> 中。</li><li>按照 <code>order</code> 字符串顺序输入至 <code>ans</code> 中。</li></ol><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    string customSortString(string order, string s) &#123;        vector&lt;int&gt; hash(26);        string ans;        for (char ch : order)hash[ch - &#39;a&#39;] = 1;        for (char ch : s)&#123;            if (hash[ch - &#39;a&#39;])                hash[ch - &#39;a&#39;]++;            else                ans += ch;        &#125;        for (char ch : order)            while (hash[ch - &#39;a&#39;] &gt; 1)&#123;                ans += ch;                hash[ch - &#39;a&#39;]--;            &#125;        return ans;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度： O(n) , 遍历每个字符串一次，然后输出给字符串 ans 。</li><li>空间复杂度： O(1) ，简单定义了个 hash 表。</li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hash表 </tag>
+            
+        </tags>
       
     </entry>
     
