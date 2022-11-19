@@ -4,9 +4,34 @@
   
     
     <entry>
+      <title>找到最高海拔</title>
+      <link href="/2022/11/19/%E6%89%BE%E5%88%B0%E6%9C%80%E9%AB%98%E6%B5%B7%E6%8B%94/"/>
+      <url>/2022/11/19/%E6%89%BE%E5%88%B0%E6%9C%80%E9%AB%98%E6%B5%B7%E6%8B%94/</url>
+      
+        <content type="html"><![CDATA[<p>有一个自行车手打算进行一场公路骑行，这条路线总共由 n + 1 个不同海拔的点组成。自行车手从海拔为 0 的点 0 开始骑行。</p><p>给你一个长度为 n 的整数数组 gain ，其中 gain[i] 是点 i 和点 i + 1 的 净海拔高度差（0 &lt;&#x3D; i &lt; n）。请你返回 最高点的海拔 。</p><span id="more"></span><p>示例 1：</p><pre><code>输入：gain = [-5,1,5,0,-7]输出：1解释：海拔高度依次为 [0,-5,-4,1,1,-6] 。最高海拔为 1 。</code></pre><p>示例 2：</p><pre><code>输入：gain = [-4,-3,-2,-1,4,3,2]输出：0解释：海拔高度依次为 [0,-4,-7,-9,-10,-6,-3,-1] 。最高海拔为 0 。</code></pre><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>用一个变量记录每个位置的海拔。从中选出最高的海拔。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    int largestAltitude(vector&lt;int&gt;&amp; gain) &#123;        int posHigh = 0,maxAltitude = 0;        for (int i = 0;i &lt; gain.size();i++)&#123;            posHigh +=gain[i];            maxAltitude = max(posHigh,maxAltitude);        &#125;        return maxAltitude;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(n)</code>。遍历了一遍数组。</li><li>空间复杂的：<code>O(1)</code>。常数级个数的变量。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>子序列宽度之和</title>
-      <link href="/2022/11/19/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/"/>
-      <url>/2022/11/19/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/</url>
+      <link href="/2022/11/19/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/"/>
+      <url>/2022/11/19/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/</url>
       
         <content type="html"><![CDATA[<p>一个序列的 宽度 定义为该序列中最大元素和最小元素的差值。</p><p>给你一个整数数组 <code>nums</code> ，返回 <code>nums</code> 的所有非空 子序列 的 宽度之和 。由于答案可能非常大，请返回对 <code>1e9 + 7</code> 取余 后的结果。</p><p>子序列 定义为从一个数组里删除一些（或者不删除）元素，但不改变剩下元素的顺序得到的数组。例如，<code>[3,6,2,7]</code> 就是数组 <code>[0,3,1,6,2,2,7]</code> 的一个子序列。</p><span id="more"></span><p>示例 1：</p><pre><code>输入：nums = [2,1,3]输出：6解释：子序列为 [1], [2], [3], [2,1], [2,3], [1,3], [2,1,3] 。相应的宽度是 0, 0, 0, 1, 1, 2, 2 。宽度之和是 6 。</code></pre><p>示例 2：</p><pre><code>输入：nums = [2]输出：0</code></pre><p>提示：</p><ul><li><code>1 &lt;= nums.length &lt;= 105</code></li><li><code>1 &lt;= nums[i] &lt;= 105</code></li></ul><h2 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h2><p>由于题目要求任意子序列，则与元素所在的位置无关，所以先将序列排序。</p><p>排序之后就是求子序列的宽度了，那么我们现在就是要求每个元素对这个子序列宽度的贡献值。</p><p>若他为子序列中的最小值，则他的贡献值为负；</p><p>若为最大值，则贡献值为正。</p><p>排序之后的数组 nums 很容易知道元素 nums[i] 比他小的有 i 个元素，若他为子序列最大值，则可以在 2^i 个子序列充当最大值。若他为最小值，则可以在 2^(n-i-1) 个子序列中牌最小值。</p><p>故该元素的贡献值为：(2^(n-i-1) - 2^i) * nums[i] </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    int sumSubseqWidths(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size();        long res = 0,mod = 1e9 + 7;         sort(nums.begin(),nums.end());        vector&lt;long&gt; Pow(n,1);        for (int i = 1;i &lt; n;i++)Pow[i] = (Pow[i-1]&lt;&lt;1)%mod;        for (int i = 0;i &lt; n;i++)&#123;            res = (res + (Pow[i] - Pow[n-i-1]) * nums[i])%mod;        &#125;        return res;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O (nlogn)</code>。该代码为，排序的时间复杂度 O(nlogn) 。</li><li>空间复杂度：<code>O (n)</code>。 创建了个 Pow 数组，来缩短运行时间。</li></ul>]]></content>
       
