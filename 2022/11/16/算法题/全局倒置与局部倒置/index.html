@@ -20,22 +20,19 @@
     var CONFIG = {"hostname":"caoxing.run","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一个机器人位于一个 m * n 网格的左上角（起始点在下图中标记为 “Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。 问总共有多少条不同的路径？">
+  <meta name="description" content="给你一个长度为 n 的整数数组 nums ，表示由范围 [0, n - 1] 内所有整数组成的一个排列。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不同路径">
-<meta property="og:url" content="http://caoxing.run/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/index.html">
+<meta property="og:title" content="全局倒置与局部倒置">
+<meta property="og:url" content="http://caoxing.run/2022/11/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="一个机器人位于一个 m * n 网格的左上角（起始点在下图中标记为 “Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。 问总共有多少条不同的路径？">
+<meta property="og:description" content="给你一个长度为 n 的整数数组 nums ，表示由范围 [0, n - 1] 内所有整数组成的一个排列。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://caoxing.run/img/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84.png">
-<meta property="article:published_time" content="2022-10-22T16:27:04.000Z">
-<meta property="article:modified_time" content="2022-11-12T18:08:18.717Z">
+<meta property="article:published_time" content="2022-11-16T14:03:39.000Z">
+<meta property="article:modified_time" content="2022-11-17T14:02:28.870Z">
 <meta property="article:author" content="aggrandize72">
-<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://caoxing.run/img/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84.png">
 
-<link rel="canonical" href="http://caoxing.run/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/">
+<link rel="canonical" href="http://caoxing.run/2022/11/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/">
 
 
 <script id="page-configurations">
@@ -48,7 +45,7 @@
   };
 </script>
 
-  <title>不同路径 | aggrandize72's</title>
+  <title>全局倒置与局部倒置 | aggrandize72's</title>
   
 
 
@@ -197,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/">
+    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2022/11/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/WechatIMG146.jpeg">
@@ -210,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          不同路径
+          全局倒置与局部倒置
         </h1>
 
         <div class="post-meta">
@@ -220,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-10-23 00:27:04" itemprop="dateCreated datePublished" datetime="2022-10-23T00:27:04+08:00">2022-10-23</time>
+              <time title="创建时间：2022-11-16 22:03:39" itemprop="dateCreated datePublished" datetime="2022-11-16T22:03:39+08:00">2022-11-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-13 02:08:18" itemprop="dateModified" datetime="2022-11-13T02:08:18+08:00">2022-11-13</time>
+                <time title="修改时间：2022-11-17 22:02:28" itemprop="dateModified" datetime="2022-11-17T22:02:28+08:00">2022-11-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,43 +247,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>一个机器人位于一个 <code>m * n</code> 网格的左上角（起始点在下图中标记为 “Start” ）。</p>
-<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。</p>
-<p>问总共有多少条不同的路径？</p>
+        <p>给你一个长度为 n 的整数数组 nums ，表示由范围 [0, n - 1] 内所有整数组成的一个排列。</p>
 <span id="more"></span>
-
-<p><strong>示例 1：</strong></p>
-<p><img src="/./../../img/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84.png"></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">3</span>, <span class="built_in">n</span> = <span class="number">7</span></span><br><span class="line">输出：<span class="number">28</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例 2：</strong></p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">3</span>, n = <span class="number">2</span></span><br><span class="line">输出：<span class="number">3</span></span><br><span class="line">解释：</span><br><span class="line">从左上角开始，总共有 <span class="number">3</span> 条路径可以到达右下角。</span><br><span class="line"><span class="number">1.</span> 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line"><span class="number">2.</span> 向下 -&gt; 向下 -&gt; 向右</span><br><span class="line"><span class="number">3.</span> 向下 -&gt; 向右 -&gt; 向下</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3：</strong></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">7</span>, <span class="built_in">n</span> = <span class="number">3</span></span><br><span class="line">输出：<span class="number">28</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例 4：</strong></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：m = <span class="number">3</span>, <span class="built_in">n</span> = <span class="number">3</span></span><br><span class="line">输出：<span class="number">6</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="解题思路-一-：动态规划"><a href="#解题思路-一-：动态规划" class="headerlink" title="解题思路(一)：动态规划"></a>解题思路(一)：动态规划</h2><p>用二维数组<code>f(i, j)</code> 表示从左上角走到 <code>(i, j)</code> 的路径数量。</p>
-<p>由于我们每一步只能从向下或者向右移动一步，因此要想走到 <code>(i, j)</code>，如果向下走一步，那么会从 <code>(i-1, j)</code> 走过来；如果向右走一步，那么会从 <code>(i, j-1)</code> 走过来。因此我们可以写出动态规划转移方程：</p>
-<blockquote>
-<p><code>f(i,j) = f(i−1,j) + f(i,j−1)</code></p>
-</blockquote>
-<p>但是由于第一行与第一列在边界，所以只能为 <code>1</code> 。</p>
-<p>简单的来说就像是个杨辉三角。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int uniquePaths(int m, int n) &#123;</span><br><span class="line">    int f<span class="comment">[m]</span><span class="comment">[n]</span>;</span><br><span class="line">    f<span class="comment">[0]</span><span class="comment">[0]</span> = 1;</span><br><span class="line">    for (int i = 0; i &lt; m; ++i) &#123;</span><br><span class="line">        for (int j = 0; j &lt; n; ++j) &#123;</span><br><span class="line">            if(i = 0 &amp;&amp; j &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[0]</span><span class="comment">[j]</span> = f<span class="comment">[0]</span><span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;else if(j = 0 &amp;&amp; i &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[i]</span><span class="comment">[0]</span> = f<span class="comment">[i - 1]</span><span class="comment">[0]</span>;</span><br><span class="line">            &#125;else if(i &gt; 0 &amp;&amp;j &gt; 0)&#123;</span><br><span class="line">                f<span class="comment">[i]</span><span class="comment">[j]</span> = f<span class="comment">[i - 1]</span><span class="comment">[j]</span> + f<span class="comment">[i]</span><span class="comment">[j - 1]</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return f<span class="comment">[m - 1]</span><span class="comment">[n - 1]</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析：</strong></p>
+<p>全局倒置 的数目等于满足下述条件不同下标对 (i, j) 的数目：</p>
 <ul>
-<li>时间复杂度：<code>O(m * n)</code></li>
-<li>空间复杂度：<code>O(m * n)</code></li>
+<li>0 &lt;&#x3D; i &lt; j &lt; n</li>
+<li>nums[i] &gt; nums[j]</li>
 </ul>
-<h2 id="解题思路-二-：排列组合原理"><a href="#解题思路-二-：排列组合原理" class="headerlink" title="解题思路(二)：排列组合原理"></a>解题思路(二)：排列组合原理</h2><p>这个机器人总共需要走 <code>m + n -2</code> 步走到终点。其中有 <code>m - 1</code> 步是向下走的， <code>n - 1</code> 步是向右走的。利用排列组合知识，可以得出总共需要走 C<sub>n-1</sub><sup style="margin-left:-20px">m+n-2</sup> 步，意思就是从 <code>m + n -2</code> 步中选择 <code>n - 1</code> 步向右其余向左。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> unique<span class="constructor">Paths(<span class="params">int</span> <span class="params">m</span>, <span class="params">int</span> <span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//保证n更小。</span></span><br><span class="line">    <span class="keyword">if</span> (m &lt; n)</span><br><span class="line">        return unique<span class="constructor">Paths(<span class="params">n</span> , <span class="params">m</span>)</span>;</span><br><span class="line">    <span class="comment">//计算路径条数</span></span><br><span class="line">    <span class="built_in">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">        ans = ans<span class="operator"> * </span>(m + i - <span class="number">1</span>)<span class="operator"> / </span>i; </span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析：</strong></p>
+<p>局部倒置 的数目等于满足下述条件的下标 i 的数目：</p>
 <ul>
-<li>时间复杂度：<code>O(min(n,m))</code>;</li>
-<li>空间复杂度：<code>O(1)</code>;</li>
+<li>0 &lt;&#x3D; i &lt; n - 1</li>
+<li>nums[i] &gt; nums[i + 1]</li>
 </ul>
+<p>当数组 nums 中 全局倒置 的数量等于 局部倒置 的数量时，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<pre><code>输入：nums = [1,0,2]
+输出：true
+解释：有 1 个全局倒置，和 1 个局部倒置。
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：nums = [1,2,0]
+输出：false
+解释：有 2 个全局倒置，和 1 个局部倒置。
+</code></pre>
+<h2 id="思路一：维护后缀最小值"><a href="#思路一：维护后缀最小值" class="headerlink" title="思路一：维护后缀最小值"></a>思路一：维护后缀最小值</h2><p>由于局部导致也属于是全局倒置，只要找出一对是属于全局倒置但不属于局部倒置即可。</p>
+<ol>
+<li>遍历至 nums[i] 时，只需要找到在后面有没有比 nums[i] 更小的元素即可。</li>
+<li>所以我们从后往前遍历，保存后缀数组的最小值并与 nums[i] 进行比较即可。</li>
+</ol>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
+public:
+    bool isIdealPermutation(vector&lt;int&gt;&amp; nums) &#123;
+        int n = nums.size(), minSuff = nums[n - 1];
+        for (int i = n - 3; i &gt;= 0; i--) &#123;
+            if (nums[i] &gt; minSuff) &#123;
+                return false;
+            &#125;
+            minSuff = min(minSuff, nums[i + 1]);
+        &#125;
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+<h2 id="思路二：数学归纳"><a href="#思路二：数学归纳" class="headerlink" title="思路二：数学归纳"></a>思路二：数学归纳</h2><p>由于这个数组 nums 是由 [0 ~ n-1] 组成的排列。</p>
+<p>假设数组的全局倒置和局部倒置相等。则有：</p>
+<p>他的值与下标差不能大于 1 。</p>
+<ol>
+<li>若 nums[0] &#x3D; 0。则将原来的 [0,n-1] 即可看成 [1,n-1] 的问题</li>
+<li>若 nums[1] &#x3D; 0。则 nums[0] 一定为 1 。若不为 1 ，则在 下标为 1 的后面一定有一个数为 1 。则就不满足全局倒置和局部倒置相等了。则剩下的则可以看成 [2,n-1] 的问题。</li>
+</ol>
+<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
+public:
+    bool isIdealPermutation(vector&lt;int&gt;&amp; nums) &#123;
+        for (int i = 0; i &lt; nums.size(); i++) &#123;
+            if (nums[i] - i &gt; 1 || nums[i] - i &lt; 1) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+&#125;;
+</code></pre>
 
     </div>
 
@@ -302,7 +323,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://caoxing.run/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" title="不同路径">http://caoxing.run/2022/10/23/算法题/不同路径/</a>
+    <a href="http://caoxing.run/2022/11/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/" title="全局倒置与局部倒置">http://caoxing.run/2022/11/16/算法题/全局倒置与局部倒置/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -312,9 +333,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
-          </div>
 
         
 
@@ -322,12 +340,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/10/20/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" rel="prev" title="字符串相乘">
-      <i class="fa fa-chevron-left"></i> 字符串相乘
+    <a href="/2022/11/13/%E7%AE%97%E6%B3%95%E9%A2%98/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/" rel="prev" title="自定义字符串排序">
+      <i class="fa fa-chevron-left"></i> 自定义字符串排序
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/" rel="next" title="不同路径II">
-      不同路径II <i class="fa fa-chevron-right"></i>
+    <a href="/2022/11/19/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/" rel="next" title="子序列宽度之和">
+      子序列宽度之和 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -388,7 +406,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-%E4%B8%80-%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">解题思路(一)：动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-%E4%BA%8C-%EF%BC%9A%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">解题思路(二)：排列组合原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E7%BB%B4%E6%8A%A4%E5%90%8E%E7%BC%80%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">思路一：维护后缀最小值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%EF%BC%9A%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3"><span class="nav-number">2.</span> <span class="nav-text">思路二：数学归纳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="nav-number">2.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -534,7 +552,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'aggrandize72.github.io',
       owner       : 'aggrandize72',
       admin       : ['aggrandize72'],
-      id          : '4a971cb9de4cb2d3436be87b77f29039',
+      id          : 'dbaa670b5b9b99b3c954496f8ff2308c',
         language: 'zh-CN',
       distractionFreeMode: false
     });

@@ -4,11 +4,36 @@
   
     
     <entry>
-      <title>全局倒置与局部倒置</title>
-      <link href="/2022/11/16/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/"/>
-      <url>/2022/11/16/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/</url>
+      <title>子序列宽度之和</title>
+      <link href="/2022/11/19/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/"/>
+      <url>/2022/11/19/%E5%AD%90%E5%BA%8F%E5%88%97%E5%AE%BD%E5%BA%A6%E4%B9%8B%E5%92%8C/</url>
       
-        <content type="html"><![CDATA[<p>给你一个长度为 n 的整数数组 nums ，表示由范围 [0, n - 1] 内所有整数组成的一个排列。</p><p>全局倒置 的数目等于满足下述条件不同下标对 (i, j) 的数目：</p><ul><li>0 &lt;&#x3D; i &lt; j &lt; n</li><li>nums[i] &gt; nums[j]</li></ul><p>局部倒置 的数目等于满足下述条件的下标 i 的数目：</p><ul><li>0 &lt;&#x3D; i &lt; n - 1</li><li>nums[i] &gt; nums[i + 1]</li></ul><p>当数组 nums 中 全局倒置 的数量等于 局部倒置 的数量时，返回 true ；否则，返回 false 。</p><p>示例 1：</p><pre><code>输入：nums = [1,0,2]输出：true解释：有 1 个全局倒置，和 1 个局部倒置。</code></pre><p>示例 2：</p><pre><code>输入：nums = [1,2,0]输出：false解释：有 2 个全局倒置，和 1 个局部倒置。</code></pre><h2 id="思路一：维护后缀最小值"><a href="#思路一：维护后缀最小值" class="headerlink" title="思路一：维护后缀最小值"></a>思路一：维护后缀最小值</h2><p>由于局部导致也属于是全局倒置，只要找出一对是属于全局倒置但不属于局部倒置即可。</p><ol><li>遍历至 nums[i] 时，只需要找到在后面有没有比 nums[i] 更小的元素即可。</li><li>所以我们从后往前遍历，保存后缀数组的最小值并与 nums[i] 进行比较即可。</li></ol><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    bool isIdealPermutation(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size(), minSuff = nums[n - 1];        for (int i = n - 3; i &gt;= 0; i--) &#123;            if (nums[i] &gt; minSuff) &#123;                return false;            &#125;            minSuff = min(minSuff, nums[i + 1]);        &#125;        return true;    &#125;&#125;;</code></pre><h2 id="思路二：数学归纳"><a href="#思路二：数学归纳" class="headerlink" title="思路二：数学归纳"></a>思路二：数学归纳</h2><p>由于这个数组 nums 是由 [0 ~ n-1] 组成的排列。</p><p>假设数组的全局倒置和局部倒置相等。则有：</p><p>他的值与下标差不能大于 1 。</p><ol><li>若 nums[0] &#x3D; 0。则将原来的 [0,n-1] 即可看成 [1,n-1] 的问题</li><li>若 nums[1] &#x3D; 0。则 nums[0] 一定为 1 。若不为 1 ，则在 下标为 1 的后面一定有一个数为 1 。则就不满足全局倒置和局部倒置相等了。则剩下的则可以看成 [2,n-1] 的问题。</li></ol><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    bool isIdealPermutation(vector&lt;int&gt;&amp; nums) &#123;        for (int i = 0; i &lt; nums.size(); i++) &#123;            if (nums[i] - i &gt; 1 || nums[i] - i &lt; 1) &#123;                return false;            &#125;        &#125;        return true;    &#125;&#125;;</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>一个序列的 宽度 定义为该序列中最大元素和最小元素的差值。</p><p>给你一个整数数组 <code>nums</code> ，返回 <code>nums</code> 的所有非空 子序列 的 宽度之和 。由于答案可能非常大，请返回对 <code>1e9 + 7</code> 取余 后的结果。</p><p>子序列 定义为从一个数组里删除一些（或者不删除）元素，但不改变剩下元素的顺序得到的数组。例如，<code>[3,6,2,7]</code> 就是数组 <code>[0,3,1,6,2,2,7]</code> 的一个子序列。</p><span id="more"></span><p>示例 1：</p><pre><code>输入：nums = [2,1,3]输出：6解释：子序列为 [1], [2], [3], [2,1], [2,3], [1,3], [2,1,3] 。相应的宽度是 0, 0, 0, 1, 1, 2, 2 。宽度之和是 6 。</code></pre><p>示例 2：</p><pre><code>输入：nums = [2]输出：0</code></pre><p>提示：</p><ul><li><code>1 &lt;= nums.length &lt;= 105</code></li><li><code>1 &lt;= nums[i] &lt;= 105</code></li></ul><h2 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h2><p>由于题目要求任意子序列，则与元素所在的位置无关，所以先将序列排序。</p><p>排序之后就是求子序列的宽度了，那么我们现在就是要求每个元素对这个子序列宽度的贡献值。</p><p>若他为子序列中的最小值，则他的贡献值为负；</p><p>若为最大值，则贡献值为正。</p><p>排序之后的数组 nums 很容易知道元素 nums[i] 比他小的有 i 个元素，若他为子序列最大值，则可以在 2^i 个子序列充当最大值。若他为最小值，则可以在 2^(n-i-1) 个子序列中牌最小值。</p><p>故该元素的贡献值为：(2^(n-i-1) - 2^i) * nums[i] </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    int sumSubseqWidths(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size();        long res = 0,mod = 1e9 + 7;         sort(nums.begin(),nums.end());        vector&lt;long&gt; Pow(n,1);        for (int i = 1;i &lt; n;i++)Pow[i] = (Pow[i-1]&lt;&lt;1)%mod;        for (int i = 0;i &lt; n;i++)&#123;            res = (res + (Pow[i] - Pow[n-i-1]) * nums[i])%mod;        &#125;        return res;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O (nlogn)</code>。该代码为，排序的时间复杂度 O(nlogn) 。</li><li>空间复杂度：<code>O (n)</code>。 创建了个 Pow 数组，来缩短运行时间。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>全局倒置与局部倒置</title>
+      <link href="/2022/11/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/"/>
+      <url>/2022/11/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%85%A8%E5%B1%80%E5%80%92%E7%BD%AE%E4%B8%8E%E5%B1%80%E9%83%A8%E5%80%92%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个长度为 n 的整数数组 nums ，表示由范围 [0, n - 1] 内所有整数组成的一个排列。</p><span id="more"></span><p>全局倒置 的数目等于满足下述条件不同下标对 (i, j) 的数目：</p><ul><li>0 &lt;&#x3D; i &lt; j &lt; n</li><li>nums[i] &gt; nums[j]</li></ul><p>局部倒置 的数目等于满足下述条件的下标 i 的数目：</p><ul><li>0 &lt;&#x3D; i &lt; n - 1</li><li>nums[i] &gt; nums[i + 1]</li></ul><p>当数组 nums 中 全局倒置 的数量等于 局部倒置 的数量时，返回 true ；否则，返回 false 。</p><p>示例 1：</p><pre><code>输入：nums = [1,0,2]输出：true解释：有 1 个全局倒置，和 1 个局部倒置。</code></pre><p>示例 2：</p><pre><code>输入：nums = [1,2,0]输出：false解释：有 2 个全局倒置，和 1 个局部倒置。</code></pre><h2 id="思路一：维护后缀最小值"><a href="#思路一：维护后缀最小值" class="headerlink" title="思路一：维护后缀最小值"></a>思路一：维护后缀最小值</h2><p>由于局部导致也属于是全局倒置，只要找出一对是属于全局倒置但不属于局部倒置即可。</p><ol><li>遍历至 nums[i] 时，只需要找到在后面有没有比 nums[i] 更小的元素即可。</li><li>所以我们从后往前遍历，保存后缀数组的最小值并与 nums[i] 进行比较即可。</li></ol><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    bool isIdealPermutation(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size(), minSuff = nums[n - 1];        for (int i = n - 3; i &gt;= 0; i--) &#123;            if (nums[i] &gt; minSuff) &#123;                return false;            &#125;            minSuff = min(minSuff, nums[i + 1]);        &#125;        return true;    &#125;&#125;;</code></pre><h2 id="思路二：数学归纳"><a href="#思路二：数学归纳" class="headerlink" title="思路二：数学归纳"></a>思路二：数学归纳</h2><p>由于这个数组 nums 是由 [0 ~ n-1] 组成的排列。</p><p>假设数组的全局倒置和局部倒置相等。则有：</p><p>他的值与下标差不能大于 1 。</p><ol><li>若 nums[0] &#x3D; 0。则将原来的 [0,n-1] 即可看成 [1,n-1] 的问题</li><li>若 nums[1] &#x3D; 0。则 nums[0] 一定为 1 。若不为 1 ，则在 下标为 1 的后面一定有一个数为 1 。则就不满足全局倒置和局部倒置相等了。则剩下的则可以看成 [2,n-1] 的问题。</li></ol><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    bool isIdealPermutation(vector&lt;int&gt;&amp; nums) &#123;        for (int i = 0; i &lt; nums.size(); i++) &#123;            if (nums[i] - i &gt; 1 || nums[i] - i &lt; 1) &#123;                return false;            &#125;        &#125;        return true;    &#125;&#125;;</code></pre>]]></content>
       
       
       <categories>
