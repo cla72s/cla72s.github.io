@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"caoxing.run","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="哦 豁">
-<meta property="og:type" content="website">
-<meta property="og:title" content="aggrandize72&#39;s">
-<meta property="og:url" content="http://caoxing.run/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/index.html">
+  <meta name="description" content="给你一个仅由字符 &#39;0&#39; 和 &#39;1&#39; 组成的字符串 s 。一步操作中，你可以将任一 &#39;0&#39; 变成 &#39;1&#39; ，或者将 &#39;1&#39; 变成 &#39;0&#39; 。 交替字符串 定义为：如果字符串中不存在相邻两个字符相等的情况，那么该字符串就是交替字符串。例如，字符串 &quot;010&quot; 是交替字符串，而字符串 &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成交替二进制字符串的最少操作数">
+<meta property="og:url" content="http://caoxing.run/2022/11/29/%E7%94%9F%E6%88%90%E4%BA%A4%E6%9B%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="哦 豁">
+<meta property="og:description" content="给你一个仅由字符 &#39;0&#39; 和 &#39;1&#39; 组成的字符串 s 。一步操作中，你可以将任一 &#39;0&#39; 变成 &#39;1&#39; ，或者将 &#39;1&#39; 变成 &#39;0&#39; 。 交替字符串 定义为：如果字符串中不存在相邻两个字符相等的情况，那么该字符串就是交替字符串。例如，字符串 &quot;010&quot; 是交替字符串，而字符串 &amp;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-29T12:42:31.000Z">
+<meta property="article:modified_time" content="2022-11-29T13:05:11.161Z">
 <meta property="article:author" content="aggrandize72">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://caoxing.run/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+<link rel="canonical" href="http://caoxing.run/2022/11/29/%E7%94%9F%E6%88%90%E4%BA%A4%E6%9B%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 深度优先搜索 | aggrandize72's</title>
+  <title>生成交替二进制字符串的最少操作数 | aggrandize72's</title>
   
 
 
@@ -185,77 +188,147 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">深度优先搜索
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2022/11/29/%E7%94%9F%E6%88%90%E4%BA%A4%E6%9B%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/WechatIMG146.jpeg">
+      <meta itemprop="name" content="aggrandize72">
+      <meta itemprop="description" content="哦 豁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aggrandize72's">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          生成交替二进制字符串的最少操作数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-29 20:42:31 / 修改时间：21:05:11" itemprop="dateCreated datePublished" datetime="2022-11-29T20:42:31+08:00">2022-11-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
+        <p>给你一个仅由字符 <code>&#39;0&#39;</code> 和 <code>&#39;1&#39;</code> 组成的字符串 <code>s</code> 。一步操作中，你可以将任一 <code>&#39;0&#39;</code> 变成 <code>&#39;1&#39;</code> ，或者将 <code>&#39;1&#39;</code> 变成 <code>&#39;0&#39;</code> 。</p>
+<p>交替字符串 定义为：如果字符串中不存在相邻两个字符相等的情况，那么该字符串就是交替字符串。例如，字符串 <code>&quot;010&quot;</code> 是交替字符串，而字符串 <code>&quot;0100&quot;</code> 不是。</p>
+<p>返回使 <code>s</code> 变成 交替字符串 所需的 最少 操作数。</p>
+<span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-01T23:57:01+08:00"
-              content="2022-11-01">
-          11-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/01/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" itemprop="url">
-            <span itemprop="name">分割回文串</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-25T22:12:00+08:00"
-              content="2022-10-25">
-          10-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/25/%E7%AE%97%E6%B3%95%E9%A2%98/%E6%9C%80%E7%9F%AD%E7%9A%84%E6%A1%A5/" itemprop="url">
-            <span itemprop="name">最短的桥</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<p>示例 1：</p>
+<pre><code>输入：s = &quot;0100&quot;
+输出：1
+解释：如果将最后一个字符变为 &#39;1&#39; ，s 就变成 &quot;0101&quot; ，即符合交替字符串定义。
+</code></pre>
+<p>示例 2：</p>
+<pre><code>输入：s = &quot;10&quot;
+输出：0
+解释：s 已经是交替字符串。
+</code></pre>
+<p>示例 3：</p>
+<pre><code>输入：s = &quot;1111&quot;
+输出：2
+解释：需要 2 步操作得到 &quot;0101&quot; 或 &quot;1010&quot; 。
+</code></pre>
+<h2 id="思路一："><a href="#思路一：" class="headerlink" title="思路一："></a>思路一：</h2><p>题目要求形成交替字符串，那么最后形成的只可能是 <code>&quot;1010……&quot;</code> 或者 <code>&quot;0101……&quot;</code> 的字符串，所以只需要记录原字符串已经排好位子的字符数量即可，只需要记录一个，然后用总数减去它，就是满足剩下的那个字符串。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
+public:
+    int minOperations(string s) &#123;
+        int n = s.size(),number = 0;
+        for (int i = 0;i &lt; n;i++) number += &#39;0&#39; ^ (i&amp;1) ^ s[i];
+        return min(number,n - number);
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：O(n)。n 为字符串长度，遍历一次字符串。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>aggrandize72
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://caoxing.run/2022/11/29/%E7%94%9F%E6%88%90%E4%BA%A4%E6%9B%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/" title="生成交替二进制字符串的最少操作数">http://caoxing.run/2022/11/29/生成交替二进制字符串的最少操作数/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/19/%E6%89%BE%E5%88%B0%E6%9C%80%E9%AB%98%E6%B5%B7%E6%8B%94/" rel="prev" title="找到最高海拔">
+      <i class="fa fa-chevron-left"></i> 找到最高海拔
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -302,6 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">思路一：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -436,6 +510,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c51ef1366bc7dc47f26',
+      clientSecret: '0b46978b6972a27390e6d6a5bd059fd58126861c',
+      repo        : 'aggrandize72.github.io',
+      owner       : 'aggrandize72',
+      admin       : ['aggrandize72'],
+      id          : '48cdf872dc9678911e9fc3f8c63e54a7',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
