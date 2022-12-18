@@ -8,7 +8,7 @@
       <link href="/2022/12/18/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
       <url>/2022/12/18/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       
-        <content type="html"><![CDATA[<span id="more"></span><h2 id="Lambda表达形式："><a href="#Lambda表达形式：" class="headerlink" title="Lambda表达形式："></a>Lambda表达形式：</h2><pre><code>[capture] (params) opt -&gt; ret&#123;body;&#125;;</code></pre><p>其中carpture是捕获列表，params是参数，opt是选项，ret则是返回值的类型，body则是函数的具体实现。</p><ol><li>捕获列表描述了lambda表达式可以访问上下文中的哪些变量。</li></ol><ul><li>[]：表示不捕获任何变量</li><li>[&#x3D;]：表示按值捕获变量</li><li>[&amp;]：表示按引用捕获变量</li><li>[this]：值传递捕获当前的this</li></ul><ol start="2"><li>params表示lambda的参数，用在{}中。</li><li>opt表示lambda的选项。</li><li>ret表示lambda的返回值类型，也可以显示指明返回值类型，lambda会自动推断返回值类型，但是值得注意的是只有当lambda的表达式仅有一条return语句时，自动推断才是有效的。</li></ol>]]></content>
+        <content type="html"><![CDATA[<p>Lambda 有很多叫法：Lambda表达式、Lambda函数、匿名函数。</p><span id="more"></span><h2 id="Lambda表达形式："><a href="#Lambda表达形式：" class="headerlink" title="Lambda表达形式："></a>Lambda表达形式：</h2><pre><code>[capture] (params) opt -&gt; ret&#123;body;&#125;;</code></pre><p>其中carpture是捕获列表，params是参数，opt是选项，ret则是返回值的类型，body则是函数的具体实现。</p><ol><li>捕获列表描述了lambda表达式可以访问上下文中的哪些变量。</li></ol><ul><li>[]：表示不捕获任何变量</li><li>[&#x3D;]：表示按值捕获变量</li><li>[&amp;]：表示按引用捕获变量</li><li>[this]：值传递捕获当前的this</li></ul><ol start="2"><li>params表示lambda的参数，用在{}中。</li><li>opt表示lambda的选项。</li><li>ret表示lambda的返回值类型，也可以显示指明返回值类型，lambda会自动推断返回值类型，但是值得注意的是只有当lambda的表达式仅有一条return语句时，自动推断才是有效的。</li></ol>]]></content>
       
       
       <categories>
