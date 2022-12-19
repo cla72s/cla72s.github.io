@@ -23,13 +23,25 @@
     
     
     <entry>
-      <title>并查集</title>
+      <title>介绍：并查集</title>
       <link href="/2022/12/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
       <url>/2022/12/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>并查集是一种树型的数据结构，用于处理一些不相交集合（disjoint sets）的合并及查询问题。常常在使用中以森林来表示。</p><span id="more"></span><h2 id="并查集的主要功能："><a href="#并查集的主要功能：" class="headerlink" title="并查集的主要功能："></a>并查集的主要功能：</h2><h3 id="初始化：（init）"><a href="#初始化：（init）" class="headerlink" title="初始化：（init）"></a>初始化：（init）</h3><p>将每个元素初始化只包含自己的集合。</p><h3 id="合并：（-merge-）"><a href="#合并：（-merge-）" class="headerlink" title="合并：（ merge ）"></a>合并：（ merge ）</h3><p>合并两个集合。</p><h3 id="查询：（-find-）"><a href="#查询：（-find-）" class="headerlink" title="查询：（ find ）"></a>查询：（ find ）</h3><p>查询元素所在的集合。</p><h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><pre><code>vector&lt;int&gt; father(n), rank(n, 1);// 深度其实可有可无// 初始化：auto init = [&amp;](vector&lt;int&gt; father, vector&lt;int&gt; rank)&#123;    iota(father.bagin(),father.end(),0);    fill(rank.bagin(),rank.end(),1);&#125;;// 查找：function&lt;int(int)&gt; find = [&amp;](int x)&#123;    return father[x] == x ? x : father[x] = find(father[x]);&#125;// 合并：auto merge = [&amp;](int x, int y)&#123;    x = find(x);    y = find(y);    if ( x != y)&#123;        if (rank[x] &lt; rank[y])&#123;            father[x] = y;        &#125;else if (rank[x] &gt; rank[y])&#123;            father[y] = x;        &#125;else&#123;            father[x] = y;            rank[y]++;        &#125;    &#125;&#125;</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> 数据结构与算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 并查集 </tag>
+            
+        </tags>
       
     </entry>
     
