@@ -28,7 +28,7 @@
 <meta property="og:description" content="介绍下常用的函数：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-07T14:13:59.000Z">
-<meta property="article:modified_time" content="2022-12-07T16:25:21.095Z">
+<meta property="article:modified_time" content="2022-12-22T10:14:55.808Z">
 <meta property="article:author" content="aggrandize72">
 <meta name="twitter:card" content="summary">
 
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">43</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">45</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-08 00:25:21" itemprop="dateModified" datetime="2022-12-08T00:25:21+08:00">2022-12-08</time>
+                <time title="修改时间：2022-12-22 18:14:55" itemprop="dateModified" datetime="2022-12-22T18:14:55+08:00">2022-12-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,26 +250,48 @@
         <p>介绍下常用的函数：</p>
 <span id="more"></span>
 <h3 id="STL-容器函数："><a href="#STL-容器函数：" class="headerlink" title="STL 容器函数："></a>STL 容器函数：</h3><p>位于头文件 <numeric> 中的函数：</p>
+<h4 id="partial-sum"><a href="#partial-sum" class="headerlink" title="partial_sum():"></a>partial_sum():</h4><p>函数原型：</p>
+<pre><code>OutputIterator partial_sum(InputIterator first, InputIterator last, OutputIterator result);
+OutputIterator partial_sum(InputIterator first, InputIterator last, OutputIterator result, BinaryOperation binary_op);
+</code></pre>
+<p>第一个函数：将迭代器的每个元素每个前缀和放至 result 容器中。</p>
+<p>第二个：自定义方式，可以取前缀积什么的。</p>
+<p>例子：</p>
+<pre><code>int list[10] = &#123; 1,2,3,4,5,6,7,8,9,10 &#125;;
+int s[10];
+partial_sum(list, list + 10, s);
+
+for (int i = 0;i &lt; 10; i++)&#123;
+    cout &lt;&lt; s[i] &lt;&lt; &quot; &quot;;
+&#125;
+</code></pre>
+<p>输出：</p>
+<pre><code>1 3 6 10 15 21 28 36 45 55 
+</code></pre>
 <h4 id="accumulate"><a href="#accumulate" class="headerlink" title="accumulate() :"></a>accumulate() :</h4><p>函数原型：</p>
 <pre><code>T accumulate(InputIterator first, InputIterator last, T init);
 T accumulate(InputIterator first, InputIterator last, T init，BinaryOperation binary_op);
 </code></pre>
-<p>第一个原型为：将迭代器每个元素相加至 init 中。</p>
+<p>第一个函数：将迭代器每个元素相加至 init 中。</p>
 <p>第二个：将迭代器中的每个元素按照 一种方式 计算。</p>
 <p>例子：</p>
 <pre><code>// 求和：
 int list[10] = &#123; 1,2,3,4,5,6,7,8,9,10 &#125;;
 int sum= accumulate(list, list+10, 0) ;
+
 // 求乘积：
 int  con_product = accumulate(list, list + 9, 1, multiplies&lt;int&gt;());
+
 // 求双倍和：
 int myfunction (int x, int y) &#123;return x + 2 * y ;&#125;
 int dSum = accumulate(list, list+10, 0, myfunction);
+
 // 求三倍和：
 struct myclass &#123;
     int operator()(int x, int y) &#123;return x + 3 * y;&#125;
 &#125; myobject;
 int tSum = accumulate(list, list+10, 0,myobject);
+
 cout &lt;&lt; &quot;sum = &quot; &lt;&lt; sum &lt;&lt; endl;
 cout &lt;&lt; &quot;dSum = &quot; &lt;&lt; dSum &lt;&lt; endl;
 cout &lt;&lt; &quot;tSum = &quot; &lt;&lt; tSum &lt;&lt; endl;
@@ -404,7 +426,7 @@ tSum = 165
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#STL-%E5%AE%B9%E5%99%A8%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">STL 容器函数：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#accumulate"><span class="nav-number">1.1.</span> <span class="nav-text">accumulate() :</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">单个字符处理：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#isdigit"><span class="nav-number">2.1.</span> <span class="nav-text">isdigit() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#islower"><span class="nav-number">2.2.</span> <span class="nav-text">islower() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isupper"><span class="nav-number">2.3.</span> <span class="nav-text">isupper() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isalpha"><span class="nav-number">2.4.</span> <span class="nav-text">isalpha() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isalnum"><span class="nav-number">2.5.</span> <span class="nav-text">isalnum() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tolower"><span class="nav-number">2.6.</span> <span class="nav-text">tolower() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toupper"><span class="nav-number">2.7.</span> <span class="nav-text">toupper() :</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#STL-%E5%AE%B9%E5%99%A8%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">STL 容器函数：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#partial-sum"><span class="nav-number">1.1.</span> <span class="nav-text">partial_sum():</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#accumulate"><span class="nav-number">1.2.</span> <span class="nav-text">accumulate() :</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">单个字符处理：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#isdigit"><span class="nav-number">2.1.</span> <span class="nav-text">isdigit() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#islower"><span class="nav-number">2.2.</span> <span class="nav-text">islower() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isupper"><span class="nav-number">2.3.</span> <span class="nav-text">isupper() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isalpha"><span class="nav-number">2.4.</span> <span class="nav-text">isalpha() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isalnum"><span class="nav-number">2.5.</span> <span class="nav-text">isalnum() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tolower"><span class="nav-number">2.6.</span> <span class="nav-text">tolower() :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toupper"><span class="nav-number">2.7.</span> <span class="nav-text">toupper() :</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -420,7 +442,7 @@ tSum = 165
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -473,7 +495,7 @@ tSum = 165
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="qwerasd"></i>
   </span>
