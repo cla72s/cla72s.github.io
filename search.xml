@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>子集</title>
+      <link href="/2023/03/25/%E5%AD%90%E9%9B%86/"/>
+      <url>/2023/03/25/%E5%AD%90%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个整数数组 <code>nums</code> ，数组中的元素 <strong>互不相同</strong> 。返回该数组所有可能的子集（幂集）。</p><p>解集 <strong>不能</strong> 包含重复的子集。你可以按 <strong>任意顺序</strong> 返回解集。</p><span id="more"></span><p><strong>示例 1：</strong></p><pre><code>输入：nums = [1,2,3]输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</code></pre><p><strong>示例 2：</strong></p><pre><code>输入：nums = [0]输出：[[],[0]]</code></pre><p><strong>提示：</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 10</code></li><li><code>-10 &lt;= nums[i] &lt;= 10</code></li><li><code>nums</code> 中的所有元素 互不相同</li></ul><p><a href="https://leetcode.cn/problems/subsets/description/">点击此去往原题处</a></p><h2 id="解题一：位图"><a href="#解题一：位图" class="headerlink" title="解题一：位图"></a>解题一：位图</h2><p>已知一个集合有 n 个元素，那么它的子集就有 2^n 个，那么将答案中的下标 i 看成一个位图，将 i 看成一个二进制数，它的第 j 位就代表其原集合的第 j 个元素的有无（1代表有，0代表没有）。</p><p>例如：i &#x3D; 4 则可以看出 0000000100 代表该子集有原集合第三个元素在，其余不在。</p><pre><code>class Solution &#123;public:    vector&lt;vector&lt;int&gt;&gt; subsets(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size(), ansSize = 1 &lt;&lt; n;        vector&lt;vector&lt;int&gt;&gt; ans(ansSize);        for (int i = 0;i &lt; ansSize;++i)&#123;            for (int j = 0;j &lt; n;++j)&#123;                if (i &amp; (1 &lt;&lt; j))ans[i].push_back(nums[j]);            &#125;        &#125;                return ans;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(n * 2 ^ n)</code>。 遍历数组加入每一个元素。</li><li>空间复杂度：<code>O(n * 2 ^ n)</code>。 答案的开销。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 位图 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>字符流</title>
       <link href="/2023/03/25/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%97%E7%AC%A6%E6%B5%81/"/>
       <url>/2023/03/25/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%97%E7%AC%A6%E6%B5%81/</url>
