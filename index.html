@@ -380,7 +380,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-22 18:14:55" itemprop="dateModified" datetime="2022-12-22T18:14:55+08:00">2022-12-22</time>
+                <time title="修改时间：2023-03-25 12:06:57" itemprop="dateModified" datetime="2023-03-25T12:06:57+08:00">2023-03-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -404,61 +404,14 @@
 
       
           <p>有一个具有 <code>n</code> 个顶点的 双向 图，其中每个顶点标记从 <code>0</code> 到 <code>n - 1</code>（包含 <code>0</code> 和 <code>n - 1</code>）。图中的边用一个二维整数数组 <code>edges</code> 表示，其中 <code>edges[i] = [ui, vi]</code> 表示顶点 <code>ui</code> 和顶点 <code>vi</code> 之间的双向边。 每个顶点对由 最多一条 边连接，并且没有顶点存在与自身相连的边。</p>
-<p>请你确定是否存在从顶点 <code>source</code> 开始，到顶点 <code>destination</code> 结束的 有效路径 。</p>
-<p>给你数组 <code>edges</code> 和整数 <code>n、source</code> 和 <code>destination</code>，如果从 <code>source</code> 到 <code>destination</code> 存在 有效路径 ，则返回 <code>true</code>，否则返回 <code>false</code> 。</p>
-<p>示例 1：</p>
-<p><img src="/./img/%E5%AF%BB%E6%89%BE%E5%9B%BE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E8%B7%AF%E5%BE%84.png"></p>
-<pre><code>输入：n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2
-输出：true
-解释：存在由顶点 0 到顶点 2 的路径:
-- 0 → 1 → 2 
-- 0 → 2
-</code></pre>
-<p>示例 2：</p>
-<p><img src="/./img/%E5%AF%BB%E6%89%BE%E5%9B%BE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E8%B7%AF%E5%BE%842.png"></p>
-<pre><code>输入：n = 6, edges = [[0,1],[0,2],[3,5],[5,4],[4,3]], source = 0, destination = 5
-输出：false
-解释：不存在由顶点 0 到顶点 5 的路径.
-</code></pre>
-<p>提示：</p>
-<ul>
-<li>1 &lt;&#x3D; n &lt;&#x3D; 2 * 105</li>
-<li>0 &lt;&#x3D; edges.length &lt;&#x3D; 2 * 105</li>
-<li>edges[i].length &#x3D;&#x3D; 2</li>
-<li>0 &lt;&#x3D; ui, vi &lt;&#x3D; n - 1</li>
-<li>ui !&#x3D; vi</li>
-<li>0 &lt;&#x3D; source, destination &lt;&#x3D; n - 1</li>
-<li>不存在重复边</li>
-<li>不存在指向顶点自身的边</li>
-</ul>
-<h2 id="思路：并查集"><a href="#思路：并查集" class="headerlink" title="思路：并查集"></a>思路：并查集</h2><p>将所有能互相抵达的点都看成一个集合。最终查找点是否在一个集合中。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
-public:
-    bool validPath(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges, int source, int destination) &#123;
-        // 并查集：
-        int fa[n];
-        iota(fa, fa + n, 0);
-        function&lt;int(int)&gt; find = [&amp;](int x)&#123;
-            return fa[x] == x ? x : fa[x] = find(fa[x]);
-        &#125;;
-        auto merge = [&amp;](int from, int to)&#123;
-            from = find(from);
-            to = find(to);
-            if (from != to)
-                fa[from] = to; 
-        &#125;;
-        // 合并
-        for (auto edge : edges) merge(edge[0], edge[1]);
-        return find(source) == find(destination);
-    &#125;
-&#125;;
-</code></pre>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度： O(n + m) 初始化并查集 n 遍历数组 edges 连接每个点 m 。</li>
-<li>空间复杂度： O(n) 创建并查集的空间。</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/12/20/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AF%BB%E6%89%BE%E5%9B%BE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E8%B7%AF%E5%BE%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
