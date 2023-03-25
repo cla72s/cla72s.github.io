@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"caoxing.run","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="哦 豁">
-<meta property="og:type" content="website">
-<meta property="og:title" content="aggrandize72&#39;s">
-<meta property="og:url" content="http://caoxing.run/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+  <meta name="description" content="设计一个算法：接收一个字符流，并检查这些字符的后缀是否是字符串数组 words 中的一个字符串。 例如，words &#x3D; [&quot;abc&quot;, &quot;xyz&quot;] 且字符流中逐个依次加入 4 个字符 &#39;a&#39;、&#39;x&#39;、&#39;y&#39; 和 &#39;z&#39; ，你所设计的算法应当可以检测到 &quot;axyz&quot; 的后缀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符流">
+<meta property="og:url" content="http://caoxing.run/2023/03/25/%E5%AD%97%E7%AC%A6%E6%B5%81/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="哦 豁">
+<meta property="og:description" content="设计一个算法：接收一个字符流，并检查这些字符的后缀是否是字符串数组 words 中的一个字符串。 例如，words &#x3D; [&quot;abc&quot;, &quot;xyz&quot;] 且字符流中逐个依次加入 4 个字符 &#39;a&#39;、&#39;x&#39;、&#39;y&#39; 和 &#39;z&#39; ，你所设计的算法应当可以检测到 &quot;axyz&quot; 的后缀">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://leetcode.cn/problems/stream-of-characters/">
+<meta property="article:published_time" content="2023-03-25T03:54:52.000Z">
+<meta property="article:modified_time" content="2023-03-25T04:05:02.482Z">
 <meta property="article:author" content="aggrandize72">
+<meta property="article:tag" content="字典树">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://leetcode.cn/problems/stream-of-characters/">
 
-<link rel="canonical" href="http://caoxing.run/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+<link rel="canonical" href="http://caoxing.run/2023/03/25/%E5%AD%97%E7%AC%A6%E6%B5%81/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 动态规划 | aggrandize72's</title>
+  <title>字符流 | aggrandize72's</title>
   
 
 
@@ -185,137 +190,206 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">动态规划
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2023/03/25/%E5%AD%97%E7%AC%A6%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/WechatIMG146.jpeg">
+      <meta itemprop="name" content="aggrandize72">
+      <meta itemprop="description" content="哦 豁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aggrandize72's">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字符流
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-25 11:54:52 / 修改时间：12:05:02" itemprop="dateCreated datePublished" datetime="2023-03-25T11:54:52+08:00">2023-03-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
+        <p>设计一个算法：接收一个字符流，并检查这些字符的后缀是否是字符串数组 <code>words</code> 中的一个字符串。</p>
+<p>例如，<code>words = [&quot;abc&quot;, &quot;xyz&quot;]</code> 且字符流中逐个依次加入 <code>4</code> 个字符 <code>&#39;a&#39;</code>、<code>&#39;x&#39;</code>、<code>&#39;y&#39;</code> 和 <code>&#39;z&#39;</code> ，你所设计的算法应当可以检测到 <code>&quot;axyz&quot;</code> 的后缀 <code>&quot;xyz&quot;</code> 与 <code>words</code> 中的字符串 <code>&quot;xyz&quot;</code> 匹配。</p>
+<p>按下述要求实现 <code>StreamChecker</code> 类：</p>
+<ul>
+<li><code>StreamChecker(String[] words)</code> ：构造函数，用字符串数组 <code>words</code> 初始化数据结构。</li>
+<li><code>boolean query(char letter)</code>：从字符流中接收一个新字符，如果字符流中的任一非空后缀能匹配 <code>words</code> 中的某一字符串，返回 <code>true</code> ；否则，返回 <code>false</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code>输入：
+[&quot;StreamChecker&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;, &quot;query&quot;]
+[[[&quot;cd&quot;, &quot;f&quot;, &quot;kl&quot;]], [&quot;a&quot;], [&quot;b&quot;], [&quot;c&quot;], [&quot;d&quot;], [&quot;e&quot;], [&quot;f&quot;], [&quot;g&quot;], [&quot;h&quot;], [&quot;i&quot;], [&quot;j&quot;], [&quot;k&quot;], [&quot;l&quot;]]
+输出：
+[null, false, false, false, true, false, true, false, false, false, false, false, true]
+解释：
+StreamChecker streamChecker = new StreamChecker([&quot;cd&quot;, &quot;f&quot;, &quot;kl&quot;]);
+streamChecker.query(&quot;a&quot;); // 返回 False
+streamChecker.query(&quot;b&quot;); // 返回 False
+streamChecker.query(&quot;c&quot;); // 返回n False
+streamChecker.query(&quot;d&quot;); // 返回 True ，因为 &#39;cd&#39; 在 words 中
+streamChecker.query(&quot;e&quot;); // 返回 False
+streamChecker.query(&quot;f&quot;); // 返回 True ，因为 &#39;f&#39; 在 words 中
+streamChecker.query(&quot;g&quot;); // 返回 False
+streamChecker.query(&quot;h&quot;); // 返回 False
+streamChecker.query(&quot;i&quot;); // 返回 False
+streamChecker.query(&quot;j&quot;); // 返回 False
+streamChecker.query(&quot;k&quot;); // 返回 False
+streamChecker.query(&quot;l&quot;); // 返回 True ，因为 &#39;kl&#39; 在 words 中
+</code></pre>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= words.length &lt;= 2000</code></li>
+<li><code>1 &lt;= words[i].length &lt;= 200</code></li>
+<li><code>words[i]</code> 由小写英文字母组成</li>
+<li><code>letter</code> 是一个小写英文字母</li>
+<li>最多调用查询 <code>4 * 104</code> 次</li>
+</ul>
+<p><img src="https://leetcode.cn/problems/stream-of-characters/" alt="点击此去往原题处"></p>
+<h2 id="解题一：字典树"><a href="#解题一：字典树" class="headerlink" title="解题一：字典树"></a>解题一：字典树</h2><pre><code>class Trie &#123;
+public:
+    vector&lt;Trie*&gt; children;
+    bool isEnd;
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    Trie()
+        : children(26)
+        , isEnd(false) &#123;&#125;
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-12T18:42:26+08:00"
-              content="2022-11-12">
-          11-12
-        </time>
-      </div>
+    void insert(string &amp; w)&#123;
+        Trie *trie = this;
+        reverse(w.begin(),w.end());
+        for (char &amp; c : w)&#123;
+            int index = c - &#39;a&#39;;
+            if (!trie -&gt; children[index])
+                trie -&gt; children[index] = new Trie();
+            trie = trie -&gt; children[index];
+        &#125;
+        trie -&gt; isEnd = true;
+    &#125;
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/12/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA/" itemprop="url">
-            <span itemprop="name">多米诺和托米诺平铺</span>
-          </a>
-      </div>
+    bool search(string &amp;w)&#123; //这里一定得用引用，不然时间会超时
+        Trie *trie = this;
+        for (int i = w.size() - 1,j = 0;~i &amp;&amp; j &lt; 201;--i,++j)&#123;
+            int index = w[i] - &#39;a&#39;;
+            if (trie -&gt; children[index] == NULL)&#123;
+                return false;
+            &#125;
+            trie = trie -&gt; children[index];
+            if (trie -&gt; isEnd) return true;
+        &#125;
+        return false;
+    &#125;
+&#125;;
 
-    </header>
-  </article>
+class StreamChecker &#123;
+public:
+    Trie* trie = new Trie();
+    string s;
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    StreamChecker(vector&lt;string&gt;&amp; words) &#123;
+        for(string word : words)&#123;
+            trie -&gt; insert(word);
+        &#125;
+    &#125;
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-11-01T23:57:01+08:00"
-              content="2022-11-01">
-          11-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/11/01/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" itemprop="url">
-            <span itemprop="name">分割回文串</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-28T08:41:50+08:00"
-              content="2022-10-28">
-          10-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/28/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E4%B9%8B%E5%92%8C/" itemprop="url">
-            <span itemprop="name">子数组的最小值之和</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-23T21:46:30+08:00"
-              content="2022-10-23">
-          10-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/" itemprop="url">
-            <span itemprop="name">不同路径II</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-23T00:27:04+08:00"
-              content="2022-10-23">
-          10-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" itemprop="url">
-            <span itemprop="name">不同路径</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+    bool query(char letter) &#123;
+        s += letter;
+        return trie -&gt; search(s);
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(L) + O(M)</code>， 其中 <code>L</code> 为 <code>words</code> 的长度 <code>M</code> 为 <code>words</code> 中最大 <code>word</code> 的长度。</li>
+<li>空间复杂度：<code>O(L)</code></li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>aggrandize72
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://caoxing.run/2023/03/25/%E5%AD%97%E7%AC%A6%E6%B5%81/" title="字符流">http://caoxing.run/2023/03/25/字符流/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" rel="tag"># 字典树</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/21/%E6%A3%80%E6%9F%A5%E9%AA%91%E5%A3%AB%E5%B7%A1%E8%A7%86%E6%96%B9%E6%A1%88/" rel="prev" title="检查骑士巡视方案">
+      <i class="fa fa-chevron-left"></i> 检查骑士巡视方案
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -362,6 +436,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E4%B8%80%EF%BC%9A%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">解题一：字典树</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -496,6 +571,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c51ef1366bc7dc47f26',
+      clientSecret: '0b46978b6972a27390e6d6a5bd059fd58126861c',
+      repo        : 'aggrandize72.github.io',
+      owner       : 'aggrandize72',
+      admin       : ['aggrandize72'],
+      id          : 'b98344498adb5918c21bc7ebd4e73b35',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
