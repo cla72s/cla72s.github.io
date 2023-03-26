@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>收集树中金币</title>
+      <link href="/2023/03/26/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/"/>
+      <url>/2023/03/26/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个 n 个节点的无向无根树，节点编号从 0 到 n - 1 。给你整数 n 和一个长度为 n - 1 的二维整数数组 edges ，其中 edges[i] &#x3D; [ai, bi] 表示树中节点 ai 和 bi 之间有一条边。再给你一个长度为 n 的数组 coins ，其中 coins[i] 可能为 0 也可能为 1 ，1 表示节点 i 处有一个金币。</p><span id="more"></span><p>一开始，你需要选择树中任意一个节点出发。你可以执行下述操作任意次：</p><p>收集距离当前节点距离为 2 以内的所有金币，或者<br>移动到树中一个相邻节点。<br>你需要收集树中所有的金币，并且回到出发节点，请你返回最少经过的边数。</p><p>如果你多次经过一条边，每一次经过都会给答案加一。</p><p><strong>示例 1：</strong></p><p><img src="https://assets.leetcode.com/uploads/2023/03/01/graph-2.png"></p><pre><code>输入：coins = [1,0,0,0,0,1], edges = [[0,1],[1,2],[2,3],[3,4],[4,5]]输出：2解释：从节点 2 出发，收集节点 0 处的金币，移动到节点 3 ，收集节点 5 处的金币，然后移动回节点 2 。</code></pre><p><strong>示例 2：</strong></p><p><img src="https://assets.leetcode.com/uploads/2023/03/02/graph-4.png"></p><pre><code>输入：coins = [0,0,0,1,1,0,0,1], edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[5,6],[5,7]]输出：2解释：从节点 0 出发，收集节点 4 和 3 处的金币，移动到节点 2 处，收集节点 7 处的金币，移动回节点 0 。</code></pre><p><strong>提示：</strong></p><ul><li><code>n == coins.length</code></li><li><code>1 &lt;= n &lt;= 3 * 104</code></li><li><code>0 &lt;= coins[i] &lt;= 1</code></li><li><code>edges.length == n - 1</code></li><li><code>edges[i].length == 2</code></li><li><code>0 &lt;= ai, bi &lt; n</code></li><li><code>ai != bi</code></li><li><code>edges</code> 表示一棵合法的树。</li></ul><p><a href="https://leetcode.cn/problems/collect-coins-in-a-tree/description/">点击此去往原题处</a></p><h2 id="解题一：拓扑排序"><a href="#解题一：拓扑排序" class="headerlink" title="解题一：拓扑排序"></a>解题一：拓扑排序</h2><pre><code>class Solution &#123;public:    int collectTheCoins(vector&lt;int&gt; &amp;coins, vector&lt;vector&lt;int&gt;&gt; &amp;edges) &#123;        int n = coins.size();        vector&lt;vector&lt;int&gt;&gt; g(n);        int deg[n]; memset(deg, 0, sizeof(deg));        for (auto &amp;e: edges) &#123;            int x = e[0], y = e[1];            g[x].push_back(y);            g[y].push_back(x); // 建图            ++deg[x];            ++deg[y];        &#125;        // 用拓扑排序「剪枝」：去掉没有金币的子树        queue&lt;int&gt; q;        for (int i = 0; i &lt; n; ++i)            if (deg[i] == 1 &amp;&amp; coins[i] == 0) // 无金币叶子                q.push(i);        while (!q.empty()) &#123;            int x = q.front();            q.pop();            for (int y: g[x])                if (--deg[y] == 1 &amp;&amp; coins[y] == 0)                    q.push(y);        &#125;        // 再次拓扑排序        for (int i = 0; i &lt; n; ++i)            if (deg[i] == 1 &amp;&amp; coins[i]) // 有金币叶子                q.push(i);        if (q.size() &lt;= 1) return 0; // 至多一个有金币的叶子，直接收集        int time[n]; memset(time, 0, sizeof(time));        while (!q.empty()) &#123;            int x = q.front();            q.pop();            for (int y: g[x])                if (--deg[y] == 1) &#123;                    time[y] = time[x] + 1; // 记录入队时间                    q.push(y);                &#125;        &#125;        // 统计答案        int ans = 0;        for (auto &amp;e: edges)            if (time[e[0]] &gt;= 2 &amp;&amp; time[e[1]] &gt;= 2)                ans += 2;        return ans;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(n)</code>。 </li><li>空间复杂度：<code>O(n)</code>。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 拓扑排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使数组元素全部相等的最少操作次数</title>
       <link href="/2023/03/26/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/"/>
       <url>/2023/03/26/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/</url>
