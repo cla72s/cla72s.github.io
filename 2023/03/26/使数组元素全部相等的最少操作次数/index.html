@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"caoxing.run","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="哦 豁">
-<meta property="og:type" content="website">
-<meta property="og:title" content="aggrandize72&#39;s">
-<meta property="og:url" content="http://caoxing.run/archives/2022/10/page/2/index.html">
+  <meta name="description" content="给你一个正整数数组 nums 。 同时给你一个长度为 m 的整数数组 queries 。第 i 个查询中，你需要将 nums 中所有元素变成 queries[i] 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使数组元素全部相等的最少操作次数">
+<meta property="og:url" content="http://caoxing.run/2023/03/26/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="哦 豁">
+<meta property="og:description" content="给你一个正整数数组 nums 。 同时给你一个长度为 m 的整数数组 queries 。第 i 个查询中，你需要将 nums 中所有元素变成 queries[i] 。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-26T05:01:37.000Z">
+<meta property="article:modified_time" content="2023-03-26T05:17:04.744Z">
 <meta property="article:author" content="aggrandize72">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="二分查找">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://caoxing.run/archives/2022/10/page/2/">
+<link rel="canonical" href="http://caoxing.run/2023/03/26/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -38,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | aggrandize72's</title>
+  <title>使数组元素全部相等的最少操作次数 | aggrandize72's</title>
   
 
 
@@ -185,240 +189,174 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">还行! 目前共计 48 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2023/03/26/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/WechatIMG146.jpeg">
+      <meta itemprop="name" content="aggrandize72">
+      <meta itemprop="description" content="哦 豁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aggrandize72's">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使数组元素全部相等的最少操作次数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-26 13:01:37 / 修改时间：13:17:04" itemprop="dateCreated datePublished" datetime="2023-03-26T13:01:37+08:00">2023-03-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
+        <p>给你一个正整数数组 <code>nums</code> 。</p>
+<p>同时给你一个长度为 <code>m</code> 的整数数组 <code>queries</code> 。第 <code>i</code> 个查询中，你需要将 <code>nums</code> 中所有元素变成 <code>queries[i]</code> 。</p>
+<span id="more"></span>
+<p>你可以执行以下操作 任意 次：</p>
+<ul>
+<li>将数组里一个元素 增大 或者 减小 <code>1</code> 。</li>
+</ul>
+<p>请你返回一个长度为 <code>m</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是将 <code>nums</code> 中所有元素变成 <code>queries[i]</code> 的 最少 操作次数。</p>
+<p>注意，每次查询后，数组变回最开始的值。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入：nums = [3,1,6,8], queries = [1,5]
+输出：[14,10]
+解释：第一个查询，我们可以执行以下操作：
+- 将 nums[0] 减小 2 次，nums = [1,1,6,8] 。
+- 将 nums[2] 减小 5 次，nums = [1,1,1,8] 。
+- 将 nums[3] 减小 7 次，nums = [1,1,1,1] 。
+第一个查询的总操作次数为 2 + 5 + 7 = 14 。
+第二个查询，我们可以执行以下操作：
+- 将 nums[0] 增大 2 次，nums = [5,1,6,8] 。
+- 将 nums[1] 增大 4 次，nums = [5,5,6,8] 。
+- 将 nums[2] 减小 1 次，nums = [5,5,5,8] 。
+- 将 nums[3] 减小 3 次，nums = [5,5,5,5] 。
+第二个查询的总操作次数为 2 + 4 + 1 + 3 = 10 。
+</code></pre>
+<p><strong>示例 2：</strong></p>
+<pre><code>输入：nums = [2,9,6,3], queries = [10]
+输出：[20]
+解释：我们可以将数组中所有元素都增大到 10 ，总操作次数为 8 + 1 + 4 + 7 = 20 。
+</code></pre>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>n == nums.length</code></li>
+<li><code>m == queries.length</code></li>
+<li><code>1 &lt;= n, m &lt;= 105</code></li>
+<li><code>1 &lt;= nums[i], queries[i] &lt;= 109</code></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-operations-to-make-all-array-elements-equal/">点击此去往原题处</a></p>
+<h2 id="思路一：排序-二分查找-前缀和"><a href="#思路一：排序-二分查找-前缀和" class="headerlink" title="思路一：排序 + 二分查找 + 前缀和"></a>思路一：排序 + 二分查找 + 前缀和</h2><p>先将数组 nums 进行排序，排序后将其前缀和存入数组中，最后对每一个 queries[i] 进行二分查找计算。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
+public:
+    vector&lt;long long&gt; minOperations(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; queries) &#123;
+        int n = queries.size(),m = nums.size();
+        vector&lt;long long&gt; ans(n),sum(m + 1);
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+        sort(nums.begin(),nums.end());
+        for (int i = 1;i &lt;= m;++i) sum[i] = sum[i-1] + nums[i-1]; // 计算前缀和
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-23T21:46:30+08:00"
-              content="2022-10-23">
-          10-23
-        </time>
-      </div>
+        for (int i = 0;i &lt; n;++i)&#123;
+            int index = lower_bound(nums.begin(),nums.end(),queries[i]) - nums.begin(); // 二分查找
+            ans[i] = sum[m] - 2*sum[index] + (long long)queries[i] * (2*index - m);
+        &#125;
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/" itemprop="url">
-            <span itemprop="name">不同路径II</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-23T00:27:04+08:00"
-              content="2022-10-23">
-          10-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/23/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" itemprop="url">
-            <span itemprop="name">不同路径</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-20T22:57:14+08:00"
-              content="2022-10-20">
-          10-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/20/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" itemprop="url">
-            <span itemprop="name">字符串相乘</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-19T23:07:18+08:00"
-              content="2022-10-19">
-          10-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/19/%E7%AE%97%E6%B3%95%E9%A2%98/%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0/" itemprop="url">
-            <span itemprop="name">缺失的第一个正数</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-18T21:22:06+08:00"
-              content="2022-10-18">
-          10-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/18/%E7%AE%97%E6%B3%95%E9%A2%98/%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84/" itemprop="url">
-            <span itemprop="name">搜索旋转数组</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-17T23:38:17+08:00"
-              content="2022-10-17">
-          10-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/17/%E7%AE%97%E6%B3%95%E9%A2%98/K-%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" itemprop="url">
-            <span itemprop="name">K 个一组翻转链表</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-16T17:12:15+08:00"
-              content="2022-10-16">
-          10-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/16/%E7%AE%97%E6%B3%95%E9%A2%98/%E2%80%9C%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E8%8A%82%E7%82%B9%E2%80%9D/" itemprop="url">
-            <span itemprop="name">两两交换节点</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-15T16:53:19+08:00"
-              content="2022-10-15">
-          10-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/15/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%90%88%E5%B9%B6k%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" itemprop="url">
-            <span itemprop="name">合并k个有序链表</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-15T02:01:23+08:00"
-              content="2022-10-15">
-          10-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/15/%E7%AE%97%E6%B3%95%E9%A2%98/%E9%80%92%E5%BD%92%E4%BB%A5%E5%8F%8A%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8/" itemprop="url">
-            <span itemprop="name">合并两个有序列表</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-13T18:55:03+08:00"
-              content="2022-10-13">
-          10-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/13/%E7%AE%97%E6%B3%95%E9%A2%98/%E2%80%9C%E5%AE%B9%E5%99%A8%E7%9B%9B%E6%B0%B4%E2%80%9D/" itemprop="url">
-            <span itemprop="name">容器盛水</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O((m + n) * logm)</code>。m 为 nums 长度，n为 queries 长度</li>
+<li>空间复杂度：<code>O(n + m)</code>。</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>aggrandize72
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://caoxing.run/2023/03/26/%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/" title="使数组元素全部相等的最少操作次数">http://caoxing.run/2023/03/26/使数组元素全部相等的最少操作次数/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag"># 前缀和</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag"># 二分查找</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/25/%E5%AD%90%E9%9B%86/" rel="prev" title="子集">
+      <i class="fa fa-chevron-left"></i> 子集
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2022/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2022/10/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2022/10/page/3/">3</a><a class="extend next" rel="next" href="/archives/2022/10/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -465,6 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E6%8E%92%E5%BA%8F-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">1.</span> <span class="nav-text">思路一：排序 + 二分查找 + 前缀和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -599,6 +538,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c51ef1366bc7dc47f26',
+      clientSecret: '0b46978b6972a27390e6d6a5bd059fd58126861c',
+      repo        : 'aggrandize72.github.io',
+      owner       : 'aggrandize72',
+      admin       : ['aggrandize72'],
+      id          : 'ad50ca465738e0178cb8174a73fbfe4f',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
