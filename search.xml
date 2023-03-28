@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>最短公共超序列</title>
+      <link href="/2023/03/28/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/"/>
+      <url>/2023/03/28/%E6%9C%80%E7%9F%AD%E5%85%AC%E5%85%B1%E8%B6%85%E5%BA%8F%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<p>给出两个字符串 <code>str1</code> 和 <code>str2</code>，返回同时以 <code>str1</code> 和 <code>str2</code> 作为子序列的最短字符串。如果答案不止一个，则可以返回满足条件的任意一个答案。</p><span id="more"></span><p>（如果从字符串 <code>T</code> 中删除一些字符（也可能不删除，并且选出的这些字符可以位于 <code>T</code> 中的 任意位置），可以得到字符串 <code>S</code>，那么 <code>S</code> 就是 <code>T</code> 的子序列）</p><p><strong>示例：</strong></p><pre><code>输入：str1 = &quot;abac&quot;, str2 = &quot;cab&quot;输出：&quot;cabac&quot;解释：str1 = &quot;abac&quot; 是 &quot;cabac&quot; 的一个子串，因为我们可以删去 &quot;cabac&quot; 的第一个 &quot;c&quot;得到 &quot;abac&quot;。 str2 = &quot;cab&quot; 是 &quot;cabac&quot; 的一个子串，因为我们可以删去 &quot;cabac&quot; 末尾的 &quot;ac&quot; 得到 &quot;cab&quot;。最终我们给出的答案是满足上述属性的最短字符串。</code></pre><p><strong>提示：</strong></p><ul><li><code>1 &lt;= str1.length, str2.length &lt;= 1000</code></li><li><code>str1 和 str2 都由小写英文字母组成。</code></li></ul><p><a href="https://leetcode.cn/problems/shortest-common-supersequence/description/">原题处</a></p><h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><pre><code>class Solution &#123;public:    string shortestCommonSupersequence(string &amp;s, string &amp;t) &#123;        int n = s.length(), m = t.length(), f[n + 1][m + 1];        for (int j = 0; j &lt; m; ++j) f[0][j] = j;        for (int i = 1; i &lt; n; ++i) f[i][0] = i;        for (int i = 0; i &lt; n; ++i)            for (int j = 0; j &lt; m; ++j)                if (s[i] == t[j])                     f[i + 1][j + 1] = f[i][j] + 1;                else                     f[i + 1][j + 1] = min(f[i][j + 1], f[i + 1][j]) + 1;        string ans;        int i = n - 1, j = m - 1;        while (~i &amp;&amp; ~j) &#123;            if (s[i] == t[j]) &#123;                 ans += s[i];                --i;                --j;             &#125; else if (f[i + 1][j + 1] == f[i][j + 1] + 1)                ans += s[i--];             else                ans += t[j--];         &#125;        reverse(ans.begin(), ans.end());                return s.substr(0, i + 1) + t.substr(0, j + 1) + ans;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(m * n)</code>。</li><li>空间复杂度：<code>O(m * n)</code>。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>修车的最少时间</title>
       <link href="/2023/03/27/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%BF%AE%E8%BD%A6%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/"/>
       <url>/2023/03/27/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%BF%AE%E8%BD%A6%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/</url>
       
-        <content type="html"><![CDATA[<p>给你一个整数数组 <code>ranks</code> ，表示一些机械工的 能力值 。<code>ranks[i]</code> 是第 <code>i</code> 位机械工的能力值。能力值为 <code>r</code> 的机械工可以在 <code>r * n2</code> 分钟内修好 <code>n</code> 辆车。</p><span id="more"></span><p>同时给你一个整数 <code>cars</code> ，表示总共需要修理的汽车数目。</p><p>请你返回修理所有汽车 最少 需要多少时间。</p><p>注意：所有机械工可以同时修理汽车。</p><p><strong>示例 1：</strong></p><pre><code>输入：ranks = [4,2,3,1], cars = 10输出：16解释：- 第一位机械工修 2 辆车，需要 4 * 2 * 2 = 16 分钟。- 第二位机械工修 2 辆车，需要 2 * 2 * 2 = 8 分钟。- 第三位机械工修 2 辆车，需要 3 * 2 * 2 = 12 分钟。- 第四位机械工修 4 辆车，需要 1 * 4 * 4 = 16 分钟。16 分钟是修理完所有车需要的最少时间。</code></pre><p><strong>示例 2：</strong></p><pre><code>输入：ranks = [5,1,8], cars = 6输出：16解释：- 第一位机械工修 1 辆车，需要 5 * 1 * 1 = 5 分钟。- 第二位机械工修 4 辆车，需要 1 * 4 * 4 = 16 分钟。- 第三位机械工修 1 辆车，需要 8 * 1 * 1 = 8 分钟。16 分钟时修理完所有车需要的最少时间。</code></pre><p><strong>提示：</strong></p><ul><li><code>1 &lt;= ranks.length &lt;= 105</code></li><li><code>1 &lt;= ranks[i] &lt;= 100</code></li><li><code>1 &lt;= cars &lt;= 106</code></li></ul><p><a href="https://leetcode.cn/problems/minimum-time-to-repair-cars/description/">原题出处</a></p><h2 id="题解一："><a href="#题解一：" class="headerlink" title="题解一："></a>题解一：</h2><p>对修车时间进行二分，查找 满足题意的最小时间。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    long long repairCars(vector&lt;int&gt; &amp;ranks, int cars) &#123;        int min_r = ranks[0], cnt[101]&#123;&#125;;        for (int r : ranks) &#123;            min_r = min(min_r, r);            ++cnt[r];        &#125;        long long left = 0, right = 1LL * min_r * cars * cars;        while (left + 1 &lt; right) &#123;             long long mid = (left + right) / 2, s = 0;            for (int r = min_r; r &lt;= 100; ++r)                s += (long long) sqrt(mid / r) * cnt[r];            (s &gt;= cars ? right : left) = mid;        &#125;        return right;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(n + M log (m * cars ^ 2))</code>。 M &#x3D; max(ranks) , m &#x3D; min(ranks)。</li><li>空间复杂度：<code>O(c)</code>。</li></ul>]]></content>
+        <content type="html"><![CDATA[<p>给你一个整数数组 <code>ranks</code> ，表示一些机械工的 能力值 。<code>ranks[i]</code> 是第 <code>i</code> 位机械工的能力值。能力值为 <code>r</code> 的机械工可以在 <code>r * n2</code> 分钟内修好 <code>n</code> 辆车。</p><span id="more"></span><p>同时给你一个整数 <code>cars</code> ，表示总共需要修理的汽车数目。</p><p>请你返回修理所有汽车 最少 需要多少时间。</p><p>注意：所有机械工可以同时修理汽车。</p><p><strong>示例 1：</strong></p><pre><code>输入：ranks = [4,2,3,1], cars = 10输出：16解释：- 第一位机械工修 2 辆车，需要 4 * 2 * 2 = 16 分钟。- 第二位机械工修 2 辆车，需要 2 * 2 * 2 = 8 分钟。- 第三位机械工修 2 辆车，需要 3 * 2 * 2 = 12 分钟。- 第四位机械工修 4 辆车，需要 1 * 4 * 4 = 16 分钟。16 分钟是修理完所有车需要的最少时间。</code></pre><p><strong>示例 2：</strong></p><pre><code>输入：ranks = [5,1,8], cars = 6输出：16解释：- 第一位机械工修 1 辆车，需要 5 * 1 * 1 = 5 分钟。- 第二位机械工修 4 辆车，需要 1 * 4 * 4 = 16 分钟。- 第三位机械工修 1 辆车，需要 8 * 1 * 1 = 8 分钟。16 分钟时修理完所有车需要的最少时间。</code></pre><p><strong>提示：</strong></p><ul><li><code>1 &lt;= ranks.length &lt;= 105</code></li><li><code>1 &lt;= ranks[i] &lt;= 100</code></li><li><code>1 &lt;= cars &lt;= 106</code></li></ul><p><a href="https://leetcode.cn/problems/minimum-time-to-repair-cars/description/">原题出处</a></p><h2 id="题解一："><a href="#题解一：" class="headerlink" title="题解一："></a>题解一：</h2><p>对修车时间进行二分，查找 满足题意的最小时间。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;public:    long long repairCars(vector&lt;int&gt; &amp;ranks, int cars) &#123;        int min_r = ranks[0], cnt[101]&#123;&#125;;        for (int r : ranks) &#123;            min_r = min(min_r, r);            ++cnt[r];        &#125;        long long left = 0, right = 1LL * min_r * cars * cars;        while (left + 1 &lt; right) &#123;             long long mid = (left + right) / 2, s = 0;            for (int r = min_r; r &lt;= 100; ++r)                s += (long long) sqrt(mid / r) * cnt[r];            (s &gt;= cars ? right : left) = mid;        &#125;        return right;    &#125;&#125;;</code></pre><p><strong>复杂度分析：</strong></p><ul><li>时间复杂度：<code>O(n + M log (m * cars ^ 2))</code>。 M &#x3D; max(ranks) , m &#x3D; min(ranks)。</li><li>空间复杂度：<code>O(M)</code>。</li></ul>]]></content>
       
       
       <categories>
