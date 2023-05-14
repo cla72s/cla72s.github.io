@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>xxx</title>
-      <link href="/2023/05/14/xxx/"/>
-      <url>/2023/05/14/xxx/</url>
+      <title>ceshi</title>
+      <link href="/2023/05/14/ceshi/"/>
+      <url>/2023/05/14/ceshi/</url>
       
-        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> </span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br></pre></td></tr></table></figure><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> cccc</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br></pre></td></tr></table></figure><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="number">123</span></span><br><span class="line"><span class="type">int</span> x</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hahaha </span><br><span class="line"><span class="type">int</span> </span><br></pre></td></tr></table></figure>]]></content>
       
       
       
