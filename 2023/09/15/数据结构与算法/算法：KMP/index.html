@@ -20,20 +20,19 @@
     var CONFIG = {"hostname":"caoxing.run","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="给你一个数组 nums ，它包含若干正整数。 一开始分数 score &#x3D; 0 ，请你按照下面算法求出最后分数：">
+  <meta name="description" content="KMP 是用于字符串匹配的算法，其将字符串匹配复杂度降至 O(n)级别。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="标记所有元素后数组的分数">
-<meta property="og:url" content="http://caoxing.run/2023/03/27/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%90%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%86%E6%95%B0/index.html">
+<meta property="og:title" content="算法：KMP">
+<meta property="og:url" content="http://caoxing.run/2023/09/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9AKMP/index.html">
 <meta property="og:site_name" content="aggrandize72&#39;s">
-<meta property="og:description" content="给你一个数组 nums ，它包含若干正整数。 一开始分数 score &#x3D; 0 ，请你按照下面算法求出最后分数：">
+<meta property="og:description" content="KMP 是用于字符串匹配的算法，其将字符串匹配复杂度降至 O(n)级别。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-27T13:21:42.000Z">
-<meta property="article:modified_time" content="2023-03-27T13:40:48.479Z">
+<meta property="article:published_time" content="2023-09-15T01:41:14.000Z">
+<meta property="article:modified_time" content="2023-09-15T01:51:32.911Z">
 <meta property="article:author" content="aggrandize72">
-<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://caoxing.run/2023/03/27/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%90%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%86%E6%95%B0/">
+<link rel="canonical" href="http://caoxing.run/2023/09/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9AKMP/">
 
 
 <script id="page-configurations">
@@ -46,7 +45,7 @@
   };
 </script>
 
-  <title>标记所有元素后数组的分数 | aggrandize72's</title>
+  <title>算法：KMP | aggrandize72's</title>
   
 
 
@@ -137,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">55</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">56</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -195,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2023/03/27/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%90%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%86%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://caoxing.run/2023/09/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9AKMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/WechatIMG146.jpeg">
@@ -208,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          标记所有元素后数组的分数
+          算法：KMP
         </h1>
 
         <div class="post-meta">
@@ -219,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-03-27 21:21:42 / 修改时间：21:40:48" itemprop="dateCreated datePublished" datetime="2023-03-27T21:21:42+08:00">2023-03-27</time>
+              <time title="创建时间：2023-09-15 09:41:14 / 修改时间：09:51:32" itemprop="dateCreated datePublished" datetime="2023-09-15T09:41:14+08:00">2023-09-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法题</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
                 </span>
             </span>
 
@@ -242,86 +241,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>给你一个数组 <code>nums</code> ，它包含若干正整数。</p>
-<p>一开始分数 <code>score = 0</code> ，请你按照下面算法求出最后分数：</p>
+        <p>KMP 是用于字符串匹配的算法，其将字符串匹配复杂度降至 O(n)级别。</p>
 <span id="more"></span>
 
-<ul>
-<li>从数组中选择最小且没有被标记的整数。如果有相等元素，选择下标最小的一个。</li>
-<li>将选中的整数加到 <code>score</code> 中。</li>
-<li>标记 被选中元素，如果有相邻元素，则同时标记 与它相邻的两个元素 。</li>
-<li>重复此过程直到数组中所有元素都被标记。</li>
-</ul>
-<p>请你返回执行上述算法后最后的分数。</p>
-<p><strong>示例 1：</strong></p>
-<pre><code>输入：nums = [2,1,3,4,5,2]
-输出：7
-解释：我们按照如下步骤标记元素：
-- 1 是最小未标记元素，所以标记它和相邻两个元素：[2,1,3,4,5,2] 。
-- 2 是最小未标记元素，所以标记它和左边相邻元素：[2,1,3,4,5,2] 。
-- 4 是仅剩唯一未标记的元素，所以我们标记它：[2,1,3,4,5,2] 。
-总得分为 1 + 2 + 4 = 7 。
-</code></pre>
-<p><strong>示例 2：</strong></p>
-<pre><code>输入：nums = [2,3,5,1,3,2]
-输出：5
-解释：我们按照如下步骤标记元素：
-- 1 是最小未标记元素，所以标记它和相邻两个元素：[2,3,5,1,3,2] 。
-- 2 是最小未标记元素，由于有两个 2 ，我们选择最左边的一个 2 ，也就是下标为 0 处的 2 ，以及它右边相邻的元素：[2,3,5,1,3,2] 。
-- 2 是仅剩唯一未标记的元素，所以我们标记它：[2,3,5,1,3,2] 。
-总得分为 1 + 2 + 2 = 5 。
-</code></pre>
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 105</code></li>
-<li><code>1 &lt;= nums[i] &lt;= 106</code></li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-score-of-an-array-after-marking-all-elements/description/">点击此去往原题处</a></p>
-<h2 id="解题一：下标排序"><a href="#解题一：下标排序" class="headerlink" title="解题一：下标排序"></a>解题一：下标排序</h2><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
-public:
-    long long findScore(vector&lt;int&gt; &amp;nums) &#123;
-        int n = nums.size(), ids[n];
-        iota(ids, ids + n, 0);
-        stable_sort(ids, ids + n, [&amp;](int i, int j) &#123;
-            return nums[i] &lt; nums[j];
-        &#125;);
-
-        long long ans = 0;
-        vector&lt;bool&gt; vis(n+2); 
-        for (int i : ids)
-            if (!vis[i + 1]) &#123;  // 下标向右偏移一位
-                vis[i] = vis[i + 2] = true;
-                ans += nums[i];
-            &#125;
-        return ans;
+<p>目标字符串 s, 需匹配的字符串 t</p>
+<p>当遍历至 字符不匹配时 查询 当前 s 串的后缀串 与 t 的前缀串 匹配的最长的那一个。</p>
+<p>为了快速寻找到匹配上的最长前缀串，借用数组 next ， 其保存了若不匹配后 最长后缀串 的长度。</p>
+<h3 id="生成-next-数组："><a href="#生成-next-数组：" class="headerlink" title="生成 next 数组："></a>生成 next 数组：</h3><pre><code>vector&lt;int&gt; kmpGetNext(const string&amp; str)&#123;
+    int n = (int)str.size(), k = 0;
+    vector&lt;int&gt; next(n);
+    next[0] = 0;
+    for(int i = 1; i &lt; n ; ++i)&#123;
+        while(k &gt; 0 &amp;&amp; str[i]!=str[k]) k = next[k-1];
+        if(str[i] == str[k]) ++k;
+        next[i] = k;
     &#125;
-&#125;;
+    return next;
+&#125;
 </code></pre>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(n * log n)</code>。</li>
-<li>空间复杂度：<code>O(n)</code>。</li>
-</ul>
-<h2 id="解题二：分组循环"><a href="#解题二：分组循环" class="headerlink" title="解题二：分组循环"></a>解题二：分组循环</h2><p>可以将数组 分成 尽可能少的递减子数组，那么每个子数组的最后一位一定能被选中（因为前面一位和后面一位一定比它大，所以不可能由选中其他位置从而标记峰底元素）。所以在这个子数组中将会从后往前被标记，每隔一个元素，另一个元素将会被选中。故代码如下：</p>
-<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code>class Solution &#123;
-public:
-    long long findScore(vector&lt;int&gt; &amp;nums) &#123;
-        long long ans = 0;
-        for (int i = 0, n = nums.size(); i &lt; n; i += 2) &#123;
-            int i0 = i;
-            while (i + 1 &lt; n &amp;&amp; nums[i] &gt; nums[i + 1]) ++i; 
-            // i0到i为一个递减子数组。
-            for (int j = i; j &gt;= i0; j -= 2) ans += nums[j];
+<h3 id="查询-s-中是否有-t-串："><a href="#查询-s-中是否有-t-串：" class="headerlink" title="查询 s 中是否有 t 串："></a>查询 s 中是否有 t 串：</h3><pre><code>bool kmp(string&amp; str1, string&amp; str2)&#123;
+    int n = (int)str1.size(), m = (int)str2.size(), k = 0;
+    vector&lt;int&gt; nextArr = kmpGetNext(str2);
+    for(int i = 0;i &lt; n;++i)&#123;
+        while (k &gt; 0 &amp;&amp; str1[i] != str2[k]) &#123;
+            k = nextArr[k-1];
         &#125;
-        return ans;
+        if (str1[i] == str2[k]) &#123;
+            ++k;
+        &#125;
+        if (k == m) return true;
     &#125;
-&#125;;
+    return false;
+&#125;
 </code></pre>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(n)</code>。</li>
-<li>空间复杂度：<code>O(1)</code>。</li>
-</ul>
 
     </div>
 
@@ -337,7 +289,7 @@ public:
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://caoxing.run/2023/03/27/%E6%A0%87%E8%AE%B0%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%90%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%86%E6%95%B0/" title="标记所有元素后数组的分数">http://caoxing.run/2023/03/27/标记所有元素后数组的分数/</a>
+    <a href="http://caoxing.run/2023/09/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9AKMP/" title="算法：KMP">http://caoxing.run/2023/09/15/数据结构与算法/算法：KMP/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -347,9 +299,6 @@ public:
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
-          </div>
 
         
 
@@ -357,13 +306,10 @@ public:
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/03/26/%E7%AE%97%E6%B3%95%E9%A2%98/%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%AD%E9%87%91%E5%B8%81/" rel="prev" title="收集树中金币">
-      <i class="fa fa-chevron-left"></i> 收集树中金币
+    <a href="/2023/09/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" rel="prev" title="算法：差分数组">
+      <i class="fa fa-chevron-left"></i> 算法：差分数组
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/03/27/%E7%AE%97%E6%B3%95%E9%A2%98/%E4%BF%AE%E8%BD%A6%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4/" rel="next" title="修车的最少时间">
-      修车的最少时间 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -423,7 +369,7 @@ public:
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E4%B8%80%EF%BC%9A%E4%B8%8B%E6%A0%87%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">解题一：下标排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E4%BA%8C%EF%BC%9A%E5%88%86%E7%BB%84%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.</span> <span class="nav-text">解题二：分组循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="nav-number">2.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90-next-%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">生成 next 数组：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2-s-%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89-t-%E4%B8%B2%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">查询 s 中是否有 t 串：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -439,7 +385,7 @@ public:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -571,7 +517,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'aggrandize72.github.io',
       owner       : 'aggrandize72',
       admin       : ['aggrandize72'],
-      id          : '549d93561c7b7c95fab0e3313e2b01cf',
+      id          : '00fb56dbf667a8eeb38ba21af604124b',
         language: 'zh-CN',
       distractionFreeMode: false
     });
