@@ -258,7 +258,7 @@
 <figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">输入：nums </span>=<span class="string"> [3,4,-1,1]</span></span><br><span class="line"><span class="string">输出：2</span></span><br></pre></td></tr></table></figure>
 <p><strong>示例 3：</strong></p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="string">[7,8,9,11,12]</span></span><br><span class="line">输出：<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="思路：原地哈希表"><a href="#思路：原地哈希表" class="headerlink" title="思路：原地哈希表"></a>思路：原地哈希表</h2><br/>
+<h2 id="思路：原地哈希表"><a href="#思路：原地哈希表" class="headerlink" title="思路：原地哈希表"></a>思路：原地哈希表</h2><br>
 
 <ul>
 <li><p>要求时间复杂度为 <code>O(n)</code> ，很容易想到是把数组里面的所有正数放到哈希表中，再利用一次遍历即可找出缺失的最小正数。但是这样，空间复杂度就也变成了 <code>O(n)</code> 不符合题目所说的常数级了。<br>在这上面进行改进，把原有的数组空间看成一个哈希表，也就是原地哈希表。</p>
