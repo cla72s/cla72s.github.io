@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>纯真社区版IP库CZDB数据格式使用教程</title>
+      <link href="/2025/02/27/%E7%BA%AF%E7%9C%9F%E7%A4%BE%E5%8C%BA%E7%89%88IP%E5%BA%93CZDB%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+      <url>/2025/02/27/%E7%BA%AF%E7%9C%9F%E7%A4%BE%E5%8C%BA%E7%89%88IP%E5%BA%93CZDB%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h4 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h4><p>纯真社区版IP库是免费和公开的，并非商业数据库。CZDB格式是全新数据文件格式，并计划从2024年10月开始只维护更新该格式的数据。该IP库文件同时支持IPv4和IPv6地理位置数据，具有占用内存小，访问速度快，线程安全，更新方便快捷的特点。</p><h4 id="2、下载"><a href="#2、下载" class="headerlink" title="2、下载"></a>2、下载</h4><p>第一步、在纯真官网(纯真网络，中国历史最悠久的IP地理位置库)上注册并登录。在菜单中点击离线库，选择“纯真社区版IP库”。</p><p><img src="/./../img/j1.jpg"></p><p>IP地址位置数据由<a href=" ">纯真CZ88</a >提供支持</p >]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法：Z 函数</title>
       <link href="/2024/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9AZ-%E5%87%BD%E6%95%B0/"/>
       <url>/2024/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%EF%BC%9AZ-%E5%87%BD%E6%95%B0/</url>
